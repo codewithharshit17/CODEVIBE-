@@ -140,6 +140,33 @@ npm run dev
 
 ---
 
+## Assignment Guidelines
+
+### Proposal and planning
+- Start by opening an issue labeled `assignment` or `learning-content`.
+- Describe the learning objective, expected outcome, and how the assignment complements existing lessons.
+- Include example input/output, diagrams, or a short task description so reviewers can understand the scope.
+
+### Implementation requirements
+- Work in a dedicated branch like `assignment/<topic>` or `feature/<issue-number>-assignment`.
+- Keep each assignment focused, accessible, and aligned with CodeVibe style.
+- Document any new lesson content, sample files, or interactive examples clearly.
+- Avoid duplicating content already covered in the repository.
+
+### Submission expectations
+- Reference the related issue in your pull request.
+- Add a short summary of how learners will use the assignment.
+- Include screenshots, demo steps, or verification instructions when applicable.
+- If a contribution includes external references, cite sources and keep explanations original.
+
+### What we do not accept
+- Copy/pasted assignments from other sites without original teaching content.
+- Off-topic projects unrelated to the course path.
+- Duplicate material that repeats existing lessons.
+- Assignments submitted without clear review or testing steps.
+
+---
+
 ## Commit Guidelines
 
 ### Commit Message Format
