@@ -59,6 +59,11 @@ const downloadCode = () => {
 
   const saveProgress = (lessonId, sc, attempt) => {
     const email = localStorage.getItem("userEmail");
+    window.dispatchEvent(
+      new CustomEvent("codevibe-progress-updated", {
+        detail: { lessonId, score: sc },
+      })
+    );
     axios.post(`http://localhost:5002/api/lesson/${lessonId}/complete`, { email, score: sc })
       .catch(err => console.error("Save progress error:", err));
     onSuccess?.({ LessonId: lessonId, score: sc, tries: attempt });
@@ -249,9 +254,16 @@ const downloadCode = () => {
   };
 }, [code, initialCode, language, tries]);
   const runCode = async () => {
-    const attempt = tries + 1;
-    setTries(attempt);
-    setError(""); setScore(null); setStatus("⏳ Running...");
+    const isFirstPass = score === null;
+    const attempt = isFirstPass ? tries + 1 : tries;
+
+    if (isFirstPass) {
+      setTries(attempt);
+      setScore(null);
+    }
+
+    setError("");
+    setStatus("⏳ Running...");
     const iframe = iframeRef.current;
     const iframeDoc = iframe?.contentDocument || iframe?.contentWindow?.document;
     const iframeWin = iframe?.contentWindow;
