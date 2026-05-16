@@ -38,7 +38,7 @@ const HtmlLesson = () => {
         </Link>
 
         <Link to="/HtmlLesson2" className="course-box">
-          <h3>Lesson2: TYPE OF HTML ELEMENT — BLOCK OR INLINE</h3>
+          <h3>Lesson2: Type of HTML element — Block or Inline</h3>
           <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-2') && <span> ✅</span>}
         </Link>
