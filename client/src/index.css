@@ -1206,3 +1206,35 @@ font-weight:600;
   position: relative;
   overflow: hidden;
 }
+
+.start-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+
+  background: linear-gradient(
+    135deg,
+    #ff4d6d,
+    #ff85a1
+  );
+
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+
+  border-radius: 6px;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 0 10px rgba(255, 77, 109, 0.5);
+
+  transition: all 0.3s ease;
+}
+
+.course-box:hover .start-btn {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(255, 77, 109, 0.8);
+}

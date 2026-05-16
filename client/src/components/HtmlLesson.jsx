@@ -33,51 +33,61 @@ const HtmlLesson = () => {
       <div style={{ display: 'grid', gap: '12px', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
         <Link to="/HtmlLesson1" className="course-box">
           <h3>Lesson1: Introduction to HTML</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-1') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson2" className="course-box">
           <h3>Lesson2: TYPE OF HTML ELEMENT — BLOCK OR INLINE</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-2') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson3" className="course-box">
           <h3>Lesson3: Html List</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-3') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson4" className="course-box">
           <h3>Lesson4: Html Attribute</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-4') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson5" className="course-box">
           <h3>Lesson5: Html Media tag</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-5') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson6" className="course-box">
           <h3>Lesson6: Html Table</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-6') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson7" className="course-box">
           <h3>Lesson7: Html Form</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-7') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson8" className="course-box">
           <h3>Lesson8: Html Class & ID</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-8') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson9" className="course-box">
           <h3>Lesson9: HTML Quiz</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-9') && <span> ✅</span>}
         </Link>
 
         <Link to="/HtmlLesson10" className="course-box">
           <h3>Lesson10: HTML Project</h3>
+          <span className="start-btn">Start Lesson</span>
           {isDone('html-lesson-10') && <span> ✅</span>}
         </Link>
       </div>
