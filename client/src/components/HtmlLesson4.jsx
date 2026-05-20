@@ -16,13 +16,7 @@ const HtmlLesson4 = () => {
 
   return (
     <div className="lesson">
-<<<<<<< HEAD
-      <h1>Lesson 4: HTML Attributes</h1>
-      <div className="lesson">
-=======
       <h1>Lesson 4: Html Attribute</h1>
-      
->>>>>>> 9f95c89 (fix: improve lesson page alignment and responsiveness)
         <p>
           An attribute is extra information added inside an HTML tag to give more control or settings to that tag.
           It helps define the behaviour, appearance, or properties of HTML elements.
