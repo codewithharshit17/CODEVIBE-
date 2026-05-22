@@ -1,6 +1,26 @@
 // controller/certificate/certificatecontroller.js
 const Progress = require('../../models/progress');
 
+// Maps display course name → lesson-ID prefix
+const getCoursePrefix = (courseName) => {
+  const key = (courseName || "").toLowerCase();
+
+  const map = {
+    javascript: "js-",
+    "react.js": "react-",
+    "node.js": "node-",
+    oop: "oop-",
+    mongodb: "mongo-",
+    "express.js": "express-",
+    dbms: "dbms-",
+    dsa: "dsa-",
+    html: "html-",
+    css: "css-",
+  };
+
+  return map[key] || `${key}-`;
+};
+
 const calculateFeedback = (score) => {
   if (score >= 90) return "Outstanding performance! Keep it up!";
   if (score >= 75) return "Great job! You have a solid understanding.";
@@ -19,8 +39,21 @@ exports.getCertificateInfo = async (req, res) => {
     const progress = await Progress.findOne({ email });
     if (!progress) return res.status(404).json({ message: "User not found" });
 
-    const score = progress.scores?.[courseName] || 0; // Assuming you have scores in Progress schema
-    const completedLessons = progress.completedLessons.length;
+    const prefix = getCoursePrefix(courseName);
+
+    // Use prefix-based lookup so "JavaScript" → scores["js-lesson-1"] etc.
+    const courseScores = Object.entries(progress.scores || {})
+      .filter(([lessonId]) => lessonId.toLowerCase().startsWith(prefix))
+      .map(([, val]) => val);
+
+    const score = courseScores.length
+      ? Math.round(courseScores.reduce((a, b) => a + b, 0) / courseScores.length)
+      : 0;
+
+    // Count only lessons that belong to this course
+    const completedLessons = (progress.completedLessons || []).filter((id) =>
+      id.toLowerCase().startsWith(prefix)
+    ).length;
 
     const feedbackMessage = calculateFeedback(score);
 

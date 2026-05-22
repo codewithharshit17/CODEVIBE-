@@ -3,6 +3,26 @@ import { useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import API_BASE_URL from "../config/api";
 
+// Maps display course name → lesson-ID prefix (mirrors server-side resolver)
+const getCoursePrefix = (courseName) => {
+  const key = (courseName || "").toLowerCase();
+
+  const map = {
+    javascript: "js-",
+    "react.js": "react-",
+    "node.js": "node-",
+    oop: "oop-",
+    mongodb: "mongo-",
+    "express.js": "express-",
+    dbms: "dbms-",
+    dsa: "dsa-",
+    html: "html-",
+    css: "css-",
+  };
+
+  return map[key] || `${key}-`;
+};
+
 export default function ViewReport() {
   const { email } = useParams();
   const [search] = useSearchParams();
@@ -22,12 +42,13 @@ export default function ViewReport() {
   if (loading) return <div>Loading report...</div>;
   if (!progress) return <div>No report found for {email}</div>;
 
-  // Calculate avg score for selected course
+  // Calculate avg score for selected course using prefix resolver
+  const coursePrefix = course ? getCoursePrefix(course) : "";
   const lessonScores = Object.entries(progress.scores || {})
     .filter(([lessonId]) =>
-      lessonId.toLowerCase().startsWith(course?.toLowerCase() || "")
+      coursePrefix && lessonId.toLowerCase().startsWith(coursePrefix)
     )
-    .map(([_, val]) => val);
+    .map(([, val]) => val);
 
   const avgCourseScore = lessonScores.length
     ? Math.round(
