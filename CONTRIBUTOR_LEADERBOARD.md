@@ -14,7 +14,7 @@ Last updated: 2026-05-23
 
 | Rank | Contributor | Score | Commits | Merged PRs | Closed Issues |
 | --- | --- | ---: | ---: | ---: | ---: |
-| 1 | [@sricharan-213](https://github.com/sricharan-213) | 126 | 8 | 7 | 8 |
+| 1 | [@sricharan-213](https://github.com/sricharan-213) | 127 | 6 | 7 | 9 |
 | 2 | [@Aayuiiitmg](https://github.com/Aayuiiitmg) | 104 | 12 | 8 | 0 |
 | 3 | [@pranav-cholleti](https://github.com/pranav-cholleti) | 86 | 18 | 3 | 4 |
 | 4 | [@Mahi-19-design](https://github.com/Mahi-19-design) | 60 | 5 | 4 | 2 |
@@ -24,7 +24,7 @@ Last updated: 2026-05-23
 | 8 | [@StarDustNova-57](https://github.com/StarDustNova-57) | 41 | 3 | 2 | 3 |
 | 9 | [@advikdivekar](https://github.com/advikdivekar) | 40 | 5 | 3 | 0 |
 | 10 | [@divyagsharma2006-blip](https://github.com/divyagsharma2006-blip) | 34 | 2 | 2 | 2 |
-| 11 | [@namrarafique93-del](https://github.com/namrarafique93-del) | 34 | 2 | 2 | 2 |
+| 11 | [@namrarafique93-del](https://github.com/namrarafique93-del) | 32 | 1 | 2 | 2 |
 | 12 | [@jagrati7305](https://github.com/jagrati7305) | 31 | 3 | 2 | 1 |
 | 13 | [@indresh404](https://github.com/indresh404) | 27 | 6 | 1 | 1 |
 | 14 | [@shreyamevada6](https://github.com/shreyamevada6) | 26 | 3 | 1 | 2 |
