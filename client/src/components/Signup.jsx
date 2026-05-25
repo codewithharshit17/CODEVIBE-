@@ -108,9 +108,9 @@ const Signup = () => {
         `${API_BASE_URL}/api/auth/register`,
         {
           username: formData.username,
-          collegeName: formData.collegeName,
+          Email: formData.email,
+          college: formData.collegeName,
           year: formData.year,
-          email: formData.email,
           password: formData.password,
         }
       );

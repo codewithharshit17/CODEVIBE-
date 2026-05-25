@@ -44,7 +44,8 @@ backend.use(
       if (
         !origin ||
         allowedOrigins.includes(origin) ||
-        isLocalDevOrigin(origin)
+        isLocalDevOrigin(origin) ||
+        /^https:\/\/deploy-preview-\d+--codevibeforyou\.netlify\.app$/.test(origin)
       ) {
         callback(null, true);
       } else {

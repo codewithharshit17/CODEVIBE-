@@ -36,16 +36,16 @@ const register = async (req, res, next) => {
 
     const userCreate = new UserModel({
       username,
-      email,
+      Email: userEmail,
       password: hashedPassword,
-      college,
+      college: userCollege,
       year,
     });
 
     await userCreate.save();
 
     const token = jwt.sign(
-      { userId: userCreate._id, email, username },
+      { userId: userCreate._id, email: userEmail, username },
       process.env.JWT_SECRET || "codevibe_default_secret",
       { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
     );
@@ -54,7 +54,15 @@ const register = async (req, res, next) => {
       success: true,
       message: "User registered successfully",
       token,
-      user: { username, email, college, year },
+      user: {
+        username,
+        email: userEmail,
+        college: userCollege,
+        year,
+        bio: "",
+        avatarUrl: "",
+        joinedAt: userCreate.joinedAt,
+      },
     });
   } catch (error) {
     console.error("Registration error:", error);
@@ -78,4 +86,4 @@ const register = async (req, res, next) => {
   }
 };
 
-module.exports = register;
+module.exports = register; which to keep 
