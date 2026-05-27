@@ -186,13 +186,6 @@ header img:hover {
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-.nav-link--active {
-  background: linear-gradient(135deg, rgba(255, 77, 109, 0.7), rgba(255, 133, 161, 0.7));
-  border-color: #ff4d6d;
-  box-shadow: 0 0 20px rgba(255, 77, 109, 0.8), inset 0 0 15px rgba(255, 77, 109, 0.2);
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-}
-
 /* Hamburger Button - Hidden on larger screens */
 .hamburger-btn {
   display: none;

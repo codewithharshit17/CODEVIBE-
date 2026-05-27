@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "../AuthProvider.jsx";
-import { FaSignInAlt, FaSignOutAlt, FaUserPlus, FaTachometerAlt, FaGamepad, FaSearch, FaTimes, FaUser, FaBook } from "react-icons/fa";
+import { FaSignInAlt, FaSignOutAlt, FaUserPlus, FaTachometerAlt, FaGamepad, FaSearch, FaTimes } from "react-icons/fa";
 import logo from "../assets/websitelogo.png";
 
 const COURSES = [
@@ -89,16 +89,12 @@ const clearSearch = () => {
 
         {/* Desktop Nav */}
         <nav className="header-nav" aria-label="Main navigation">
-          <Link to="/lessons" className={`nav-link ${location.pathname === '/lessons' ? 'nav-link--active' : ''}`}>
-            <FaBook className="nav-icon" />
-            <span>Lessons</span>
-          </Link>
-          <Link to="/dashboard" className={`nav-link ${location.pathname === '/dashboard' ? 'nav-link--active' : ''}`}>
-            <FaUser className="nav-icon" />
-            <span>My Profile</span>
-          </Link>
           {user ? (
             <>
+              <Link to="/dashboard" className="nav-link">
+                <FaTachometerAlt className="nav-icon" />
+                <span>Dashboard</span>
+              </Link>
               <Link to="/login" onClick={handleLogout} className="nav-link">
                 <FaSignOutAlt className="nav-icon" />
                 <span>Logout</span>
@@ -133,14 +129,11 @@ const clearSearch = () => {
 
       {/* Mobile Nav Drawer */}
       <nav className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`} aria-label="Mobile navigation">
-        <Link to="/lessons" className="nav-link" onClick={() => setMenuOpen(false)}>
-          <FaBook className="nav-icon" /><span>Lessons</span>
-        </Link>
-        <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
-          <FaUser className="nav-icon" /><span>My Profile</span>
-        </Link>
         {user ? (
           <>
+            <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
+              <FaTachometerAlt className="nav-icon" /><span>Dashboard</span>
+            </Link>
             <Link to="/login" onClick={handleLogout} className="nav-link">
               <FaSignOutAlt className="nav-icon" /><span>Logout</span>
             </Link>
