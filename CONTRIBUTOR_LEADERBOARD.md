@@ -22,9 +22,9 @@ Last updated: 2026-05-29
 | 6 | [@pranav-cholleti](https://github.com/pranav-cholleti) | 86 | 18 | 3 | 4 |
 | 7 | [@Mahi-19-design](https://github.com/Mahi-19-design) | 82 | 6 | 5 | 4 |
 | 8 | [@DebasmitaBose0](https://github.com/DebasmitaBose0) | 75 | 0 | 0 | 15 |
-| 9 | [@divyagsharma2006-blip](https://github.com/divyagsharma2006-blip) | 65 | 5 | 4 | 3 |
-| 10 | [@vasheekhan](https://github.com/vasheekhan) | 60 | 5 | 3 | 4 |
-| 11 | [@StarDustNova-57](https://github.com/StarDustNova-57) | 58 | 4 | 3 | 4 |
+| 9 | [@StarDustNova-57](https://github.com/StarDustNova-57) | 73 | 4 | 4 | 5 |
+| 10 | [@divyagsharma2006-blip](https://github.com/divyagsharma2006-blip) | 65 | 5 | 4 | 3 |
+| 11 | [@vasheekhan](https://github.com/vasheekhan) | 60 | 5 | 3 | 4 |
 | 12 | [@codedbydollys10](https://github.com/codedbydollys10) | 51 | 13 | 2 | 1 |
 | 13 | [@Haritha-054](https://github.com/Haritha-054) | 49 | 2 | 2 | 5 |
 | 14 | [@riteshpatil9686-lgtm](https://github.com/riteshpatil9686-lgtm) | 47 | 11 | 2 | 1 |
@@ -51,9 +51,9 @@ Last updated: 2026-05-29
 | 35 | [@RishiMaskare](https://github.com/RishiMaskare) | 24 | 2 | 1 | 2 |
 | 36 | [@Kartikey-Pathak](https://github.com/Kartikey-Pathak) | 22 | 1 | 1 | 2 |
 | 37 | [@Mudita-Singh](https://github.com/Mudita-Singh) | 22 | 1 | 1 | 2 |
-| 38 | [@NarraMounika](https://github.com/NarraMounika) | 22 | 1 | 1 | 2 |
-| 39 | [@pratiyushraj007-Dev](https://github.com/pratiyushraj007-Dev) | 21 | 3 | 1 | 1 |
-| 40 | [@Mradul-0605](https://github.com/Mradul-0605) | 20 | 0 | 1 | 2 |
+| 38 | [@pratiyushraj007-Dev](https://github.com/pratiyushraj007-Dev) | 21 | 3 | 1 | 1 |
+| 39 | [@Mradul-0605](https://github.com/Mradul-0605) | 20 | 0 | 1 | 2 |
+| 40 | [@NarraMounika](https://github.com/NarraMounika) | 20 | 0 | 1 | 2 |
 | 41 | [@KaparthyReddy](https://github.com/KaparthyReddy) | 19 | 2 | 1 | 1 |
 | 42 | [@Samirahs08](https://github.com/Samirahs08) | 19 | 2 | 1 | 1 |
 | 43 | [@adityavikram-01](https://github.com/adityavikram-01) | 17 | 1 | 1 | 1 |
