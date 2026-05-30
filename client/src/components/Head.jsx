@@ -4,6 +4,7 @@ import { useAuth } from "../AuthProvider.jsx";
 import { useSearch } from "../context/SearchContext.jsx";
 import { FaSignInAlt, FaSignOutAlt, FaUserPlus, FaTachometerAlt, FaGamepad, FaSearch, FaTimes } from "react-icons/fa";
 import logo from "../assets/favicon.png";
+import StreakCounter from "./StreakCounter.jsx";
 
 const COURSES = [
   { label: "HTML Basics", path: "/HtmlLesson" },
@@ -98,7 +99,8 @@ const clearSearch = () => {
         {/* Desktop Nav */}
         <nav className="header-nav" aria-label="Main navigation">
           {user ? (
-            <>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <StreakCounter />
               <Link to="/dashboard" className="nav-link">
                 <FaTachometerAlt className="nav-icon" />
                 <span>Dashboard</span>
@@ -107,7 +109,7 @@ const clearSearch = () => {
                 <FaSignOutAlt className="nav-icon" />
                 <span>Logout</span>
               </Link>
-            </>
+            </div>
           ) : (
             <>
               <Link to="/login" className="nav-link">
@@ -139,6 +141,9 @@ const clearSearch = () => {
       <nav className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`} aria-label="Mobile navigation">
         {user ? (
           <>
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '8px' }}>
+              <StreakCounter />
+            </div>
             <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
               <FaTachometerAlt className="nav-icon" /><span>Dashboard</span>
             </Link>

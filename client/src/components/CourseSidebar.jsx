@@ -26,6 +26,17 @@ const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
   }, [coursePrefix]);
 
   useEffect(() => {
+    const handleProgress = () => {
+      setIsOpen(true);
+      
+      // Auto-dismiss after 6 seconds for better UX
+      setTimeout(() => setIsOpen(false), 6000);
+    };
+    window.addEventListener('codevibe-progress-updated', handleProgress);
+    return () => window.removeEventListener('codevibe-progress-updated', handleProgress);
+  }, []);
+
+  useEffect(() => {
     const data = progressData || { xp: 0, level: 1 };
     const lessonsLeft = totalLessons - completedCount;
     
@@ -61,12 +72,12 @@ const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
       <style>{`
         .gami-fab-container {
           position: fixed;
-          bottom: 90px;
-          right: 23px;
+          bottom: 20px;
+          left: 20px;
           z-index: 9999;
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
+          align-items: flex-start;
           gap: 12px;
         }
 
@@ -79,7 +90,7 @@ const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
           font-weight: 600;
           box-shadow: 0 4px 15px rgba(255, 75, 110, 0.4);
           animation: bounceFade 4s infinite;
-          transform-origin: bottom right;
+          transform-origin: bottom left;
           backdrop-filter: blur(5px);
           white-space: nowrap;
         }
@@ -107,7 +118,7 @@ const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
         .gami-expanded-card {
           position: fixed;
           bottom: 100px;
-          right: 40px;
+          left: 40px;
           z-index: 9999;
           background: linear-gradient(145deg, rgba(20,20,30,0.95), rgba(30,30,45,0.95));
           border-radius: 24px;
@@ -116,29 +127,33 @@ const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
           box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 77, 109, 0.1);
           width: 320px;
           backdrop-filter: blur(15px);
-          animation: slideUpFade 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transform-origin: bottom right;
+          animation: popScaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transform-origin: bottom left;
         }
 
         .gami-close-btn {
           position: absolute;
           top: 15px;
           right: 15px;
-          background: rgba(255,255,255,0.1);
-          border: none;
-          color: white;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
+          background: rgba(255, 77, 109, 0.15);
+          border: 1px solid rgba(255, 77, 109, 0.3);
+          color: #ff4d4d;
+          height: 28px;
+          padding: 0 12px;
+          border-radius: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: background 0.2s ease;
+          transition: all 0.2s ease;
+          font-size: 12px;
+          font-weight: 600;
         }
 
         .gami-close-btn:hover {
-          background: rgba(255,75,110,0.8);
+          background: rgba(255, 77, 109, 0.8);
+          border-color: rgba(255, 77, 109, 0.8);
+          color: white;
         }
 
         .gami-backdrop {
@@ -151,9 +166,10 @@ const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
           background: transparent;
         }
 
-        @keyframes slideUpFade {
-          from { opacity: 0; transform: scale(0.8) translateY(40px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes popScaleIn {
+          0% { opacity: 0; transform: scale(0.5) translateY(40px); }
+          50% { opacity: 1; transform: scale(1.05) translateY(-5px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         @keyframes bounceFade {
@@ -174,7 +190,7 @@ const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
           <div className="gami-backdrop" onClick={() => setIsOpen(false)}></div>
           <div className="gami-expanded-card">
             <button className="gami-close-btn" onClick={() => setIsOpen(false)}>
-              <FaTimes />
+              Close ✕
             </button>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
