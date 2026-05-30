@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import RoadmapGenerator from "./RoadmapGenerator";
+import ProjectGenerator from "./ProjectGenerator";
+
+import ProjectSuggestions from "./ProjectSuggestions";
+
 import FAQ from "./FAQ";
 import Testimonials from "./testimonials";
 import EmptyState from "./EmptyState";
@@ -65,16 +69,16 @@ const Courses = () => {
   };
 
   const courses = [
-    { title: 'HTML Basics', prefix: 'html', total: 10, desc: 'Start your web development journey with HTML.', img: htmlLogo, link: '/HtmlLesson', level: 'Beginner', duration: '10 lessons', category: 'Frontend' },
-    { title: 'CSS for Beginners', prefix: 'css', total: 14, desc: 'Learn how to style beautiful websites.', img: cssLogo, link: '/CssLesson', level: 'Beginner', duration: '14 lessons', category: 'Frontend' },
-    { title: 'JS for Beginners', prefix: 'js', total: 29, desc: 'Learn how to give functionality to websites.', img: jsLogo, link: '/JsLesson', level: 'Intermediate', duration: '29 lessons', category: 'Frontend' },
-    { title: 'C Language for You!', prefix: 'c', total: 17, desc: 'Master the fundamentals of C programming.', img: cLogo, link: '/CLesson', level: 'Beginner', duration: '17 lessons', category: 'Programming' },
-    { title: 'OOP Concepts', prefix: 'oop', total: 14, desc: 'Learn object-oriented programming concepts.', img: OOPLogo, link: '/OopLesson', level: 'Intermediate', duration: '14 lessons', category: 'Programming' },
-    { title: 'Data Structures & Algorithms', prefix: 'dsa', total: 12, desc: 'Build strong problem-solving skills.', img: dsaLogo, link: '/DsaLesson', level: 'Advanced', duration: '12 lessons', category: 'Programming' },
-    { title: 'Node.js', prefix: 'node', total: 12, desc: 'Learn backend development with Node.js.', img: nodeLogo, link: '/NodeLesson', level: 'Intermediate', duration: '12 lessons', category: 'Backend' },
-    { title: 'React.js', prefix: 'react', total: 13, desc: 'Build modern frontend applications.', img: reactLogo, link: '/ReactLesson', level: 'Intermediate', duration: '13 lessons', category: 'Frontend' },
-    { title: 'Express.js', prefix: 'express', total: 10, desc: 'Fast and minimal backend framework.', img: expressLogo, link: '/ExpressLesson', level: 'Intermediate', duration: '10 lessons', category: 'Backend' },
-    { title: 'MongoDB', prefix: 'mongo', total: 8, desc: 'Learn modern NoSQL database concepts.', img: mongoLogo, link: '/MongoLesson', level: 'Beginner', duration: '8 lessons', category: 'Database' },
+    { title: 'HTML Basics', prefix: 'html', total: 15, desc: 'Start your web development journey with HTML.', img: htmlLogo, link: '/HtmlLesson', level: 'Beginner', duration: '15 lessons', time: '2h 30m', category: 'Frontend' },
+    { title: 'CSS for Beginners', prefix: 'css', total: 14, desc: 'Learn how to style beautiful websites.', img: cssLogo, link: '/CssLesson', level: 'Beginner', duration: '14 lessons', time: '3h', category: 'Frontend' },
+    { title: 'JS for Beginners', prefix: 'js', total: 29, desc: 'Learn how to give functionality to websites.', img: jsLogo, link: '/JsLesson', level: 'Intermediate', duration: '29 lessons', time: '6h 30m', category: 'Frontend' },
+    { title: 'C Language for You!', prefix: 'c', total: 17, desc: 'Master the fundamentals of C programming.', img: cLogo, link: '/CLesson', level: 'Beginner', duration: '17 lessons', time: '4h', category: 'Programming' },
+    { title: 'OOP Concepts', prefix: 'oop', total: 14, desc: 'Learn object-oriented programming concepts.', img: OOPLogo, link: '/OopLesson', level: 'Intermediate', duration: '14 lessons', time: '3h 30m' , category: 'Programming' },
+    { title: 'Data Structures & Algorithms', prefix: 'dsa', total: 12, desc: 'Build strong problem-solving skills.', img: dsaLogo, link: '/DsaLesson', level: 'Advanced', duration: '12 lessons', time: '8h', category: 'Programming' },
+    { title: 'Node.js', prefix: 'node', total: 12, desc: 'Learn backend development with Node.js.', img: nodeLogo, link: '/NodeLesson', level: 'Intermediate', duration: '12 lessons', time: '3h' , category: 'Backend' },
+    { title: 'React.js', prefix: 'react', total: 13, desc: 'Build modern frontend applications.', img: reactLogo, link: '/ReactLesson', level: 'Intermediate', duration: '13 lessons', time: '5h' , category: 'Frontend' },
+    { title: 'Express.js', prefix: 'express', total: 10, desc: 'Fast and minimal backend framework.', img: expressLogo, link: '/ExpressLesson', level: 'Intermediate', duration: '10 lessons', time: '2h 30m' , category: 'Backend' },
+    { title: 'MongoDB', prefix: 'mongo', total: 8, desc: 'Learn modern NoSQL database concepts.', img: mongoLogo, link: '/MongoLesson', level: 'Beginner', duration: '8 lessons', time: '2h' , category: 'Database' },
   ];
 
   const categories = ['All', ...new Set(courses.map(course => course.category))];
@@ -388,7 +392,10 @@ const Courses = () => {
               </div>
 
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>
-                <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem' }}>📖 {course.duration}</span>
+                <div style={{ display: 'flex',  gap: '12px', justifyContent: 'center', marginTop: '8px', color: '#cbd5e1', fontSize: '14px'}}>
+                <span>📚 {course.duration}</span>
+                <span>⏱️ {course.time}</span>
+                  </div>
               </div>
 
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: '1.5', textAlign: 'center', margin: '0 0 20px 0', flex: 1 }}>
@@ -436,6 +443,11 @@ const Courses = () => {
         />
       )}
       <RoadmapGenerator />
+
+      <ProjectGenerator />
+
+      <ProjectSuggestions />
+
       <Testimonials />
       <FAQ />
     </div>

@@ -183,7 +183,8 @@ const HtmlLesson = () => {
 
         .header-icon {
           font-size: 3.5rem;
-          color: #ff4d4d;
+          color: #EF4444;
+          filter: drop-shadow(0 0 10px rgba(255,92,122,.9));
           animation: float 3s ease-in-out infinite;
         }
 
@@ -250,7 +251,7 @@ const HtmlLesson = () => {
 
         .progress-percent {
           font-weight: bold;
-          color: #ff4d4d;
+          color: #FF5C7A;
         }
 
         .progress-bar {
@@ -261,7 +262,7 @@ const HtmlLesson = () => {
         }
 
         .progress-fill {
-          background: linear-gradient(90deg, #ff4d4d, #ff8c4d);
+          background: linear-gradient(90deg, #EF4444, #FF5C7A);
           height: 100%;
           border-radius: 10px;
           transition: width 0.5s ease;
@@ -353,10 +354,11 @@ const HtmlLesson = () => {
           font-size: 1.25rem;
           margin: 0 0 8px 0;
           font-weight: 600;
+          min-height: 64px;
         }
 
         .course-category {
-          color: #ff4d4d;
+          color: #FF6B81;
           font-size: 0.85rem;
           margin-bottom: 8px;
           font-weight: 500;
@@ -373,6 +375,7 @@ const HtmlLesson = () => {
           font-size: 0.9rem;
           line-height: 1.5;
           margin-bottom: 20px;
+          min-height: 70px;
         }
 
         .start-btn-wrapper {
@@ -384,7 +387,8 @@ const HtmlLesson = () => {
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #ff4d4d;
+          background: linear-gradient(90deg,#EF4444,#FF5C7A);
+          box-shadow: 0 0 15px rgba(255,92,122,.4);
           border: none;
           border-radius: 8px;
           color: white;
@@ -396,8 +400,8 @@ const HtmlLesson = () => {
         }
 
         .course-card:hover .start-btn {
-          background: #ff3333;
-          gap: 12px;
+          background: linear-gradient(90deg,#EF4444,#FF5C7A);
+          box-shadow: 0 0 25px rgba(255,92,122,.6);
         }
 
         .btn-arrow {
@@ -447,7 +451,19 @@ const HtmlLesson = () => {
           }
 
           .course-card {
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
           }
         }
 

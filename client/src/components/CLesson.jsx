@@ -241,7 +241,8 @@ const CLesson = () => {
 
         .header-icon {
           font-size: 3.5rem;
-          color: #2d6a4f;
+          color: #60A5FA;
+          filter: drop-shadow(0 0 10px rgba(76,201,240,.9));
           animation: float 3s ease-in-out infinite;
         }
 
@@ -287,7 +288,7 @@ const CLesson = () => {
         }
 
         .stat-icon {
-          color: #2d6a4f;
+          color: #60A5FA;
         }
 
         .trophy-icon {
@@ -297,7 +298,7 @@ const CLesson = () => {
 
         .progress-percent {
           font-weight: bold;
-          color: #2d6a4f;
+          color: #60A5FA;
         }
 
         .progress-bar {
@@ -308,7 +309,7 @@ const CLesson = () => {
         }
 
         .progress-fill {
-          background: linear-gradient(90deg, #2d6a4f, #52b788);
+          background: linear-gradient(90deg,#162456,#60A5FA);
           height: 100%;
           border-radius: 10px;
           transition: width 0.5s ease;
@@ -358,7 +359,10 @@ const CLesson = () => {
           position: relative;
           overflow: hidden;
           cursor: pointer;
-          display: block;
+
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .course-card:hover {
@@ -427,6 +431,7 @@ const CLesson = () => {
           font-size: 1.2rem;
           margin: 0 0 8px 0;
           font-weight: 600;
+          min-height: 64px;
         }
 
         .course-meta {
@@ -445,6 +450,7 @@ const CLesson = () => {
           font-size: 0.9rem;
           line-height: 1.5;
           margin-bottom: 20px;
+          min-height: 70px;
         }
 
         .start-btn-wrapper {
@@ -456,7 +462,8 @@ const CLesson = () => {
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #2d6a4f;
+          background: linear-gradient(90deg,#162456,#60A5FA);
+          box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
           border: none;
           border-radius: 8px;
           color: white;
@@ -468,8 +475,8 @@ const CLesson = () => {
         }
 
         .course-card:hover .start-btn {
-          background: #1b4d3e;
-          gap: 12px;
+          background: linear-gradient(90deg,#162456,#60A5FA);
+          box-shadow: 0 0 25px rgba(96,165,250,.6);
         }
 
         .btn-arrow {
@@ -527,9 +534,7 @@ const CLesson = () => {
             gap: 16px;
           }
 
-          .course-card {
-            padding: 20px;
-          }
+          
         }
 
         @media (min-width: 769px) and (max-width: 1024px) {

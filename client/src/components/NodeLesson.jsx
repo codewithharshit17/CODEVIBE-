@@ -239,7 +239,8 @@ const NodeLesson = () => {
 
         .header-icon {
           font-size: 3.5rem;
-          color: #68a063;
+          color: #34D399;
+          filter: drop-shadow(0 0 10px rgba(52,211,153,.9));
           animation: float 3s ease-in-out infinite;
         }
 
@@ -285,7 +286,7 @@ const NodeLesson = () => {
         }
 
         .stat-icon {
-          color: #68a063;
+          color: #34D399;
         }
 
         .trophy-icon {
@@ -295,7 +296,7 @@ const NodeLesson = () => {
 
         .progress-percent {
           font-weight: bold;
-          color: #68a063;
+          color: #34D399;
         }
 
         .progress-bar {
@@ -306,7 +307,7 @@ const NodeLesson = () => {
         }
 
         .progress-fill {
-          background: linear-gradient(90deg, #68a063, #8bc34a);
+          background: linear-gradient(90deg,#68a063,8cc84b);
           height: 100%;
           border-radius: 10px;
           transition: width 0.5s ease;
@@ -356,7 +357,9 @@ const NodeLesson = () => {
           position: relative;
           overflow: hidden;
           cursor: pointer;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .course-card:hover {
@@ -425,6 +428,7 @@ const NodeLesson = () => {
           font-size: 1.2rem;
           margin: 0 0 8px 0;
           font-weight: 600;
+          min-height: 64px;
         }
 
         .course-meta {
@@ -443,6 +447,7 @@ const NodeLesson = () => {
           font-size: 0.9rem;
           line-height: 1.5;
           margin-bottom: 20px;
+          min-height: 70px;
         }
 
         .start-btn-wrapper {
@@ -454,7 +459,8 @@ const NodeLesson = () => {
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #68a063;
+          background: linear-gradient(90deg,#10B981,#34D399);
+          box-shadow: 0 0 15px rgba(52, 211, 153, 0.4);
           border: none;
           border-radius: 8px;
           color: white;
@@ -466,8 +472,8 @@ const NodeLesson = () => {
         }
 
         .course-card:hover .start-btn {
-          background: #4c7a47;
-          gap: 12px;
+          background: linear-gradient(90deg,#10B981,#34D399);
+          box-shadow: 0 0 25px rgba(52,211,153,.6);
         }
 
         .btn-arrow {

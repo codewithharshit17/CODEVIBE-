@@ -39,7 +39,7 @@ const MongoLesson = () => {
       default: return { bg: '#636e7220', color: '#b2bec3', border: '#636e72' };
     }
   };
-
+  
   const getCategoryIcon = (category) => {
     switch(category) {
       case 'CRUD Operations': return <FaDatabase />;
@@ -252,7 +252,8 @@ const MongoLesson = () => {
 
         .header-icon {
           font-size: 3.5rem;
-          color: #4db33d;
+          color: #3CB371;
+          filter: drop-shadow(0 0 10px rgba(60, 179, 113, 0.5));
           animation: float 3s ease-in-out infinite;
         }
 
@@ -298,7 +299,7 @@ const MongoLesson = () => {
         }
 
         .stat-icon {
-          color: #4db33d;
+          color: #3CB371;
         }
 
         .trophy-icon {
@@ -308,7 +309,7 @@ const MongoLesson = () => {
 
         .progress-percent {
           font-weight: bold;
-          color: #4db33d;
+          color: #3CB371;
         }
 
         .progress-bar {
@@ -319,7 +320,7 @@ const MongoLesson = () => {
         }
 
         .progress-fill {
-          background: linear-gradient(90deg, #4db33d, #8bc34a);
+          background: linear-gradient(90deg,#2E8B57,#3CB371);
           height: 100%;
           border-radius: 10px;
           transition: width 0.5s ease;
@@ -369,7 +370,9 @@ const MongoLesson = () => {
           position: relative;
           overflow: hidden;
           cursor: pointer;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .course-card:hover {
@@ -423,12 +426,12 @@ const MongoLesson = () => {
         }
 
         .category-icon {
-          color: #4db33d;
+          color: #3CB371;
           font-size: 0.9rem;
         }
 
         .category-name {
-          color: #4db33d;
+          color: #3CB371;
           font-size: 0.8rem;
           font-weight: 500;
         }
@@ -447,6 +450,7 @@ const MongoLesson = () => {
           font-size: 1.2rem;
           margin: 0 0 8px 0;
           font-weight: 600;
+          min-height: 64px;
         }
 
         .course-meta {
@@ -465,6 +469,7 @@ const MongoLesson = () => {
           font-size: 0.9rem;
           line-height: 1.5;
           margin-bottom: 20px;
+          min-height: 70px;
         }
 
         .start-btn-wrapper {
@@ -476,7 +481,8 @@ const MongoLesson = () => {
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #4db33d;
+          background: linear-gradient(90deg,#2E8B57,#3CB371);
+          box-shadow: 0 0 15px rgba(60, 179, 113, 0.4);
           border: none;
           border-radius: 8px;
           color: white;
@@ -488,8 +494,9 @@ const MongoLesson = () => {
         }
 
         .course-card:hover .start-btn {
-          background: #3d8a30;
-          gap: 12px;
+          background: linear-gradient(90deg,#3CB371,#20B2AA);
+          box-shadow: 0 0 25px rgba(60, 179, 113, 0.6);
+          transform: translateY(-2px);
         }
 
         .btn-arrow {

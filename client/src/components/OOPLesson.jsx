@@ -243,7 +243,8 @@ const OOPLesson = () => {
 
         .header-icon {
           font-size: 3.5rem;
-          color: #e17055;
+          color: #e67e5f;
+          filter: drop-shadow(0 0 6px rgba(230,126,95,0.9));
           animation: float 3s ease-in-out infinite;
         }
 
@@ -299,7 +300,7 @@ const OOPLesson = () => {
 
         .progress-percent {
           font-weight: bold;
-          color: #e17055;
+          color: #e67e5f;
         }
 
         .progress-bar {
@@ -360,7 +361,9 @@ const OOPLesson = () => {
           position: relative;
           overflow: hidden;
           cursor: pointer;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .course-card:hover {
@@ -429,6 +432,7 @@ const OOPLesson = () => {
           font-size: 1.2rem;
           margin: 0 0 8px 0;
           font-weight: 600;
+          min-height: 64px;
         }
 
         .course-meta {
@@ -447,6 +451,7 @@ const OOPLesson = () => {
           font-size: 0.9rem;
           line-height: 1.5;
           margin-bottom: 20px;
+          min-height: 70px;
         }
 
         .start-btn-wrapper {
@@ -458,7 +463,8 @@ const OOPLesson = () => {
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #e17055;
+          background: linear-gradient(90deg,#f4a261,#e67e5f);
+          box-shadow: 0 0 15px rgba(255, 92, 122, 0.4);
           border: none;
           border-radius: 8px;
           color: white;
@@ -469,10 +475,10 @@ const OOPLesson = () => {
           justify-content: center;
         }
 
-        .course-card:hover .start-btn {
-          background: #d63031;
-          gap: 12px;
-        }
+.course-card:hover .start-btn {
+    background: linear-gradient(90deg,#F87171,#FF5C7A);
+    box-shadow: 0 0 25px rgba(255,92,122,.6);
+}
 
         .btn-arrow {
           transition: transform 0.3s ease;

@@ -253,7 +253,8 @@ const JsLesson = () => {
 
         .header-icon {
           font-size: 3.5rem;
-          color: #f7df1e;
+          color: #FFD166;
+          filter: drop-shadow(0 0 10px rgba(255,200,87,.9));
           animation: float 3s ease-in-out infinite;
         }
 
@@ -299,7 +300,7 @@ const JsLesson = () => {
         }
 
         .stat-icon {
-          color: #f7df1e;
+          color: #FFD166;
         }
 
         .trophy-icon {
@@ -309,7 +310,7 @@ const JsLesson = () => {
 
         .progress-percent {
           font-weight: bold;
-          color: #f7df1e;
+          color: #FFD166;
         }
 
         .progress-bar {
@@ -320,7 +321,7 @@ const JsLesson = () => {
         }
 
         .progress-fill {
-          background: linear-gradient(90deg, #f7df1e, #f39c12);
+          background: linear-gradient(90deg, #FFD166, #facc15);
           height: 100%;
           border-radius: 10px;
           transition: width 0.5s ease;
@@ -370,7 +371,9 @@ const JsLesson = () => {
           position: relative;
           overflow: hidden;
           cursor: pointer;
-          display: block;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .course-card:hover {
@@ -448,6 +451,7 @@ const JsLesson = () => {
           font-size: 1.2rem;
           margin: 0 0 8px 0;
           font-weight: 600;
+          min-height: 64px;
         }
 
         .course-meta {
@@ -466,6 +470,7 @@ const JsLesson = () => {
           font-size: 0.9rem;
           line-height: 1.5;
           margin-bottom: 20px;
+          min-height: 70px;
         }
 
         .start-btn-wrapper {
@@ -477,22 +482,38 @@ const JsLesson = () => {
           align-items: center;
           gap: 8px;
           padding: 10px 20px;
-          background: #f7df1e;
+          background: #FFD166;
+          color: #000;
+          font-weight: 700;
+          box-shadow: 0 0 15px rgba(255, 209, 102, 0.4);
           border: none;
           border-radius: 8px;
-          color: #1a1a2e;
           font-weight: bold;
           cursor: pointer;
           transition: all 0.3s ease;
           width: 100%;
           justify-content: center;
         }
-
-        .course-card:hover .start-btn {
-          background: #f39c12;
-          gap: 12px;
+        
+        .course-category {
+          color: #FACC15;
         }
 
+
+        .course-card:hover .start-btn {
+        background: #FFD166;
+        color: #000;
+        box-shadow: 0 0 25px rgba(255,209,102,.6);
+        }
+
+
+        .start-btn,
+        .start-btn *,
+        .course-card:hover .start-btn,
+        .course-card:hover .start-btn * {
+          color: #000;
+          }
+          
         .btn-arrow {
           transition: transform 0.3s ease;
         }
