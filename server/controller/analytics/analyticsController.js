@@ -157,7 +157,12 @@ const getAnalytics = async (req, res) => {
     }
 
     const [user, progress, events] = await Promise.all([
-      User.findOne({ Email: email }).lean(),
+      User.findOne({
+      $or: [
+      { email },
+      { Email: email }
+      ],      
+      }).lean(),
       Progress.findOne({ email }).lean(),
       Analytics.find({ email }).sort({ createdAt: 1 }).lean(),
     ]);
