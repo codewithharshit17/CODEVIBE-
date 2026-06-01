@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import RoadmapGenerator from "./RoadmapGenerator";
 import ProjectGenerator from "./ProjectGenerator";
 import ProjectSuggestions from "./ProjectSuggestions";
@@ -39,6 +39,20 @@ const Courses = () => {
     const savedWishlist = localStorage.getItem('codevibe_wishlist');
     if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
   }, []);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state?.scrollToFaq) {
+      const element = document.querySelector('.faq-section');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Fallback to checking by component tag if wrapper class varies
+        document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+      }
+      // Clear navigation history state so it doesn't trigger on a normal page reload
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
 
   const toggleWishlist = (e, courseTitle) => {
     e.preventDefault();

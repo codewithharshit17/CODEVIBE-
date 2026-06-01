@@ -95,6 +95,7 @@ const Head = () => {
     inputRef.current?.focus();
   };
 
+
   return (
     <header className="site-header" ref={wrapperRef}>
       {/* Row 1: Logo + Nav + Hamburger */}
@@ -111,11 +112,16 @@ const Head = () => {
 
         {/* Desktop Nav */}
         <nav className="header-nav" aria-label="Main navigation">
-          {/* Glossary visible to ALL users */}
-          <Link to="/glossary" className="nav-link">
-            <span>Glossary</span>
-          </Link>
+          {/* 1. Public Link: Available to everyone */}
+          <Link 
+  to="/lessons" 
+  state={{ scrollToFaq: true }} 
+  className="nav-link"
+>
+  <span>FAQ</span>
+</Link>
 
+          {/* 2. Conditional Links based on Auth State */}
           {user ? (
             <>
               <Link to="/dashboard" className="nav-link">
