@@ -122,6 +122,38 @@ const Head = () => {
             <span>FAQ</span>
           </Link>
 
+          <button
+            type="button"
+            className="nav-link"
+            onClick={() => navigate("/lessons", { state: { scrollToRoadmap: true } })}
+          >
+            <span>Roadmap Generator</span>
+          </button>
+
+          <button
+            type="button"
+            className="nav-link"
+            onClick={() => navigate("/lessons", { state: { scrollToProjectGenerator: true } })}
+          >
+            <span>Project Milestone</span>
+          </button>
+
+          <button
+            type="button"
+            className="nav-link"
+            onClick={() => navigate("/lessons", { state: { scrollToProjectSuggestions: true } })}
+          >
+            <span>Project Suggestions</span>
+          </button>
+
+          <button
+            type="button"
+            className="nav-link"
+            onClick={() => navigate("/lessons", { state: { scrollToCourses: true } })}
+          >
+            <span>Courses</span>
+          </button>
+
           {/* 2. Conditional Links based on Auth State */}
           {user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -220,7 +252,70 @@ const Head = () => {
         )}
       </nav>
 
-      {/* Row 2: Title */}
+      {/* Mobile Nav Drawer */}
+      <nav
+        className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`}
+        aria-label="Mobile navigation"
+      >
+        <Link
+          to="/lessons"
+          className="nav-link"
+          onClick={() => {
+            setMenuOpen(false);
+            navigate('/lessons', { state: { scrollToFaq: true } });
+          }}
+        >
+          <span>FAQ</span>
+        </Link>
+        <button
+          type="button"
+          className="nav-link"
+          onClick={() => {
+            setMenuOpen(false);
+            navigate('/lessons', { state: { scrollToRoadmap: true } });
+          }}
+        >
+          <span>Roadmap Generator</span>
+        </button>
+        <button
+          type="button"
+          className="nav-link"
+          onClick={() => {
+            setMenuOpen(false);
+            navigate('/lessons', { state: { scrollToProjectGenerator: true } });
+          }}
+        >
+          <span>Project Milestone</span>
+        </button>
+        <button
+          type="button"
+          className="nav-link"
+          onClick={() => {
+            setMenuOpen(false);
+            navigate('/lessons', { state: { scrollToProjectSuggestions: true } });
+          }}
+        >
+          <span>Project Suggestions</span>
+        </button>
+        <button
+          type="button"
+          className="nav-link"
+          onClick={() => {
+            setMenuOpen(false);
+            navigate('/lessons', { state: { scrollToCourses: true } });
+          }}
+        >
+          <span>Courses</span>
+        </button>
+        <Link
+          to="/glossary"
+          className="nav-link"
+          onClick={() => setMenuOpen(false)}
+        >
+          <span>Glossary</span>
+        </Link>
+      </nav>
+
       {isHomePage && (
         <div className="header-title-row">
           <h1>

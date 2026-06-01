@@ -113,6 +113,7 @@ const RoadmapGenerator = () => {
 
   return (
     <section
+      id="roadmap-generator"
       style={{
         marginTop: "80px",
         marginBottom: "80px",

@@ -62,10 +62,44 @@ const Courses = () => {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       } else {
-        // Fallback to checking by component tag if wrapper class varies
         document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
       }
-      // Clear navigation history state so it doesn't trigger on a normal page reload
+    }
+
+    if (location.state?.scrollToRoadmap) {
+      const element = document.getElementById('roadmap-generator');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    if (location.state?.scrollToProjectGenerator) {
+      const element = document.getElementById('project-generator');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    if (location.state?.scrollToProjectSuggestions) {
+      const element = document.getElementById('project-suggestions');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    if (location.state?.scrollToCourses) {
+      const element = document.getElementById('courses-section');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    if (
+      location.state?.scrollToFaq ||
+      location.state?.scrollToRoadmap ||
+      location.state?.scrollToProjectGenerator ||
+      location.state?.scrollToProjectSuggestions
+    ) {
       window.history.replaceState({}, document.title);
     }
   }, [location]);
@@ -117,7 +151,7 @@ const Courses = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 20px' }}>
+    <div id="courses-section" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 20px' }}>
 
       <style>{`
         @keyframes heartPop {

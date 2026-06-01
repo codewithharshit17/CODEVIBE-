@@ -59,6 +59,7 @@ const ProjectSuggestions = () => {
 
   return (
     <section
+      id="project-suggestions"
       style={{
         marginTop: "40px",
         marginBottom: "80px",
