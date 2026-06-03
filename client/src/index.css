@@ -49,7 +49,7 @@ a:hover {
 
 /* Header Styling - Gaming Minecraft Inspired */
 header {
-  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #050710 100%);
   color: white;
   padding: 1rem 2.5rem;
   display: grid;
@@ -57,10 +57,9 @@ header {
   grid-template-rows: auto auto;
   align-items: center;
   gap: 0.5rem 2rem;
-  border-bottom: 3px solid #ff4d6d;
+  /* border-bottom: 3px solid #ff4d6d;
   box-shadow: 0 0 30px rgba(255, 77, 109, 0.5),
-    inset 0 0 20px rgba(255, 77, 109, 0.1);
-  position: relative;
+  inset 0 0 20px rgba(255, 77, 109, 0.1); */
   overflow-x: hidden;
   z-index: 99998;
 }
@@ -142,19 +141,24 @@ header img:hover {
 .header-nav {
   display: flex;
   gap: 0.75rem;
-  z-index: 1;
   align-items: center;
   grid-column: 3;
   grid-row: 1;
-  justify-self: end;
+  justify-content: space-between;
+  background-color: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+}
+
+.header-navlink{
+  display: flex;
+  gap: 10px;
 }
 
 .nav-link {
   text-decoration: none;
   color: white;
   font-weight: 600;
-  background: linear-gradient(135deg, rgba(255, 77, 109, 0.25), rgba(255, 133, 161, 0.25));
-  border: 2px solid rgba(255, 77, 109, 0.6);
+  /* background: linear-gradient(135deg, rgba(255, 77, 109, 0.25), rgba(255, 133, 161, 0.25));
+  border: 2px solid rgba(255, 77, 109, 0.6); */
   padding: 0.55rem 1rem;
   border-radius: 8px;
   display: flex;
@@ -188,6 +192,30 @@ header img:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding: 10px 16px;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 3px;
+  background: #ff4d8d;
+  border-radius: 999px;
+  box-shadow: 0 0 10px #ff4d8d;
 }
 
 /* Hamburger Button - Hidden on larger screens */
@@ -2223,10 +2251,11 @@ select:focus {
 .site-header {
   background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
   color: white;
-  padding: 1.5rem 2rem;
+  /* padding: 1.5rem 2rem; */
   border-bottom: 3px solid #ff4d6d;
   box-shadow: 0 0 30px rgba(255, 77, 109, 0.5),
     inset 0 0 20px rgba(255, 77, 109, 0.1);
+    padding: 20px;
   position: relative;
   overflow: visible;
   /* allow dropdown to escape */
@@ -2234,7 +2263,7 @@ select:focus {
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
-  z-index: 99998;
+  margin-top: 30px;
 }
 
 /* Animated glow layer */
@@ -2253,9 +2282,25 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
-  z-index: 1;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 999999;
   width: 100%;
+  background: linear-gradient(
+    135deg,
+    #0a0e27 0%,
+    #1a1f3a 50%,
+    #0a0e27 100%
+  );
+
+  padding: 1rem 2.5rem;
+  border-bottom: 3px solid #ff4d6d;
+
+}
+.header-title-row,
+.header-search-row {
+  margin-top: 80px; 
 }
 
 /* Logo */
@@ -2425,7 +2470,6 @@ select:focus {
 /* ── Row 2: Title ──────────────────────────────────────────── */
 .header-title-row {
   text-align: center;
-  z-index: 1;
   position: relative;
 }
 
@@ -2465,7 +2509,6 @@ select:focus {
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 10;
   width: 100%;
 }
 
@@ -3074,5 +3117,11 @@ select:focus {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.ham-nav{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }

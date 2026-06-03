@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../AuthProvider.jsx";
 import { useSearch } from "../context/SearchContext.jsx";
 import { useDebounce } from "../hooks/useDebounce"; // added
-import { FaSignInAlt, FaSignOutAlt, FaUserPlus, FaTachometerAlt, FaGamepad, FaSearch, FaTimes, FaTrophy } from "react-icons/fa";
+import { FaSignInAlt, FaSignOutAlt, FaUserPlus, FaTachometerAlt, FaGamepad, FaSearch, FaTimes, FaHome, FaQuestionCircle, FaBook, FaEnvelope, FaTrophy } from "react-icons/fa";
 import logo from "../assets/favicon.png";
 import StreakCounter from "./StreakCounter.jsx";
 
@@ -99,28 +99,88 @@ const Head = () => {
 
   return (
     <header className="site-header" ref={wrapperRef}>
-      {/* Row 1: Logo + Nav + Hamburger */}
-      <div className="header-top">
-        <div className="header-logo-wrapper">
-          <Link to="/" aria-label="Go to homepage" className="logo-link">
-            <img
-              src={logo}
-              alt="CodeVibe Logo"
-              title="CodeVibe - Learn. Practice. Master."
-            />
-          </Link>
-        </div>
+      <nav className="header-nav" aria-label="Main navigation">
+        {/* Row 1: Logo + Nav + Hamburger */}
+        <div className="header-top">
 
-        {/* Desktop Nav */}
-        <nav className="header-nav" aria-label="Main navigation">
-          {/* 1. Public Link: Available to everyone */}
-          <Link
-            to="/lessons"
-            state={{ scrollToFaq: true }}
-            className="nav-link"
-          >
-            <span>FAQ</span>
-          </Link>
+          <div className="header-logo-wrapper">
+            <Link to="/" aria-label="Go to homepage" className="logo-link">
+              <img
+                src={logo}
+                alt="CodeVibe Logo"
+                title="CodeVibe - Learn. Practice. Master."
+              />
+            </Link>
+          </div>
+
+          {/* Desktop Nav */}
+          <div className="header-navlink">
+            {/* 1. Public Link: Available to everyone */}
+            <NavLink
+              to="/lessons"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <FaHome className="nav-icon" />
+
+              Home
+            </NavLink>
+            <NavLink
+              to="/lessons"
+              state={{ scrollToFaq: true }}
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              <FaQuestionCircle className="nav-icon" />
+              FAQ
+            </NavLink>
+            <NavLink
+              to="/lessons"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => {
+                setTimeout(() => {
+                  document
+                    .getElementById("courses")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }, 100);
+              }}
+            >
+              <FaBook className="nav-icon" />
+              Courses
+            </NavLink>
+            <NavLink
+              to="/lessons"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => {
+                setTimeout(() => {
+                  document
+                    .getElementById("contact-footer")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }, 100);
+              }}
+            >
+              <FaEnvelope className="nav-icon" />
+              Contact Us
+            </NavLink>
+          </div>
 
           <button
             type="button"
@@ -155,7 +215,9 @@ const Head = () => {
           </button>
 
           {/* 2. Conditional Links based on Auth State */}
-          {user ? (
+          <div className="header-navlink">
+
+            {user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <StreakCounter />
               <Link to="/leaderboard" className="nav-link">
@@ -171,21 +233,45 @@ const Head = () => {
                 <span>Logout</span>
               </Link>
             </div>
-          ) : (
-            <>
-              <Link to="/login" className="nav-link">
-                <FaSignInAlt className="nav-icon" />
-                <span>Login</span>
-              </Link>
-              <Link to="/signup" className="nav-link">
-                <FaUserPlus className="nav-icon" />
-                <span>Sign Up</span>
-              </Link>
-            </>
-          )}
-        </nav>
+            ) : (
+              <>
+                <NavLink to="/login" className="nav-link"
+                  onClick={() => {
+                setTimeout(() => {
+                  document
+                    .getElementById("login")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }, 100);
+              }}
+                >
+                  <FaSignInAlt className="nav-icon" />
+                  <span>Login</span>
 
-      </div>
+                </NavLink>
+                <NavLink to="/signup" className="nav-link"
+                  onClick={() => {
+                setTimeout(() => {
+                  document
+                    .getElementById("login")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }, 100);
+              }}
+                >
+                  <FaUserPlus className="nav-icon" />
+                  <span>Sign Up</span>
+                </NavLink>
+              </>
+            )}
+          </div>
+        </div>
+      </nav>
+
 
       {/* Hamburger for mobile */}
       <button
@@ -204,13 +290,77 @@ const Head = () => {
         className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`}
         aria-label="Mobile navigation"
       >
-        <Link
-          to="/glossary"
-          className="nav-link"
-          onClick={() => setMenuOpen(false)}
-        >
-          <span>Glossary</span>
-        </Link>
+        <NavLink
+              to="/lessons"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => {
+                 setMenuOpen(false);
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <FaHome className="nav-icon" />
+
+              Home
+            </NavLink>
+            <NavLink
+              to="/lessons"
+              state={{ scrollToFaq: true }}
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => setMenuOpen(false)}
+              
+            >
+              <FaQuestionCircle className="nav-icon" />
+              FAQ
+            </NavLink>
+            <NavLink
+              to="/lessons"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => {
+                 setMenuOpen(false);
+                setTimeout(() => {
+                  document
+                    .getElementById("courses")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }, 100);
+              }}
+            >
+              <FaBook className="nav-icon" />
+              Courses
+            </NavLink>
+            <NavLink
+              to="/lessons"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+              onClick={() => {
+                 setMenuOpen(false);
+
+                setTimeout(() => {
+                  document
+                    .getElementById("contact-footer")
+                    ?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                }, 100);
+              }}
+            >
+              <FaEnvelope className="nav-icon" />
+              Contact Us
+            </NavLink>
+
         {user ? (
           <>
             <div style={{ display: 'flex', justifyContent: 'center', padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '8px' }}>

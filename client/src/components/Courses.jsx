@@ -151,7 +151,7 @@ const Courses = () => {
   };
 
   return (
-    <div id="courses-section" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 20px' }}>
+    <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 20px' }} id='courses'>
 
       <style>{`
         @keyframes heartPop {

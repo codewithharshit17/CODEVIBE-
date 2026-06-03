@@ -85,7 +85,7 @@ const Signup = () => {
   };
 
   return (
-    <section className="login-section">
+    <section className="login-section" id="signup">
       <div className="login-container">
 
         {/* Left Image */}
