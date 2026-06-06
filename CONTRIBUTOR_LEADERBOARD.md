@@ -43,7 +43,7 @@ Last updated: 2026-06-06
 | 27 | [@Soham156](https://github.com/Soham156) | 48 | 4 | 2 | 4 |
 | 28 | [@anshul23102](https://github.com/anshul23102) | 47 | 1 | 1 | 7 |
 | 29 | [@YashvardhanJani](https://github.com/YashvardhanJani) | 47 | 6 | 2 | 3 |
-| 30 | [@shyam-medh](https://github.com/shyam-medh) | 41 | 13 | 1 | 1 |
+| 30 | [@shyam-medh](https://github.com/shyam-medh) | 46 | 13 | 1 | 2 |
 | 31 | [@Tech4Aditya](https://github.com/Tech4Aditya) | 41 | 3 | 2 | 3 |
 | 32 | [@advikdivekar](https://github.com/advikdivekar) | 40 | 5 | 3 | 0 |
 | 33 | [@anujsharma8d](https://github.com/anujsharma8d) | 40 | 5 | 2 | 2 |
