@@ -27,6 +27,7 @@ const Head = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [focused, setFocused] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   const inputRef = useRef(null);
   const wrapperRef = useRef(null);
   const navigate = useNavigate();
@@ -294,186 +295,192 @@ useEffect(() => {
       </button>
 
       {/* Mobile Nav Drawer */}
-      <nav
-        className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`}
-        aria-label="Mobile navigation"
-      >
-        <NavLink
-              to="/lessons"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-              onClick={() => {
-                 setMenuOpen(false);
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                });
-              }}
-            >
-              <FaHome className="nav-icon" />
-
-              Home
-            </NavLink>
-            <NavLink
-              to="/lessons"
-              state={{ scrollToFaq: true }}
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-              onClick={() => setMenuOpen(false)}
-              
-            >
-              <FaQuestionCircle className="nav-icon" />
-              FAQ
-            </NavLink>
-            <NavLink
-              to="/lessons"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-              onClick={() => {
-                 setMenuOpen(false);
-                setTimeout(() => {
-                  document
-                    .getElementById("courses")
-                    ?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                }, 100);
-              }}
-            >
-              <FaBook className="nav-icon" />
-              Courses
-            </NavLink>
-            <NavLink
-              to="/lessons"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-              onClick={() => {
-                 setMenuOpen(false);
-
-                setTimeout(() => {
-                  document
-                    .getElementById("contact-footer")
-                    ?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                }, 100);
-              }}
-            >
-              <FaEnvelope className="nav-icon" />
-              Contact Us
-            </NavLink>
-
-        {user ? (
-          <>
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '8px' }}>
-              <StreakCounter />
-            </div>
-            <Link to="/leaderboard" className="nav-link" onClick={() => setMenuOpen(false)}>
-              <FaTrophy className="nav-icon" /><span>Leaderboard</span>
-            </Link>
-            <Link to="/dashboard" className="nav-link" onClick={() => setMenuOpen(false)}>
-              <FaTachometerAlt className="nav-icon" /><span>Dashboard</span>
-            </Link>
-            <Link to="/login" onClick={handleLogout} className="nav-link">
-              <FaSignOutAlt className="nav-icon" />
-              <span>Logout</span>
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link
-              to="/login"
-              onClick={() => {
-                handleLogout();
-                setMenuOpen(false);
-              }}
-              className="nav-link"
-            >
-              <FaSignOutAlt className="nav-icon" />
-              <span>Logout</span>
-            </Link>
-            <Link
-              to="/signup"
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              <FaUserPlus className="nav-icon" />
-              <span>Sign Up</span>
-            </Link>
-          </>
-        )}
-      </nav>
-
+    
       {/* Mobile Nav Drawer */}
-      <nav
-        className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`}
-        aria-label="Mobile navigation"
-      >
-        <Link
-          to="/lessons"
-          className="nav-link"
-          onClick={() => {
-            setMenuOpen(false);
-            navigate('/lessons', { state: { scrollToFaq: true } });
-          }}
-        >
-          <span>FAQ</span>
-        </Link>
-        <button
-          type="button"
-          className="nav-link"
-          onClick={() => {
-            setMenuOpen(false);
-            navigate('/lessons', { state: { scrollToRoadmap: true } });
-          }}
-        >
-          <span>Roadmap Generator</span>
-        </button>
-        <button
-          type="button"
-          className="nav-link"
-          onClick={() => {
-            setMenuOpen(false);
-            navigate('/lessons', { state: { scrollToProjectGenerator: true } });
-          }}
-        >
-          <span>Project Milestone</span>
-        </button>
-        <button
-          type="button"
-          className="nav-link"
-          onClick={() => {
-            setMenuOpen(false);
-            navigate('/lessons', { state: { scrollToProjectSuggestions: true } });
-          }}
-        >
-          <span>Project Suggestions</span>
-        </button>
-        <button
-          type="button"
-          className="nav-link"
-          onClick={() => {
-            setMenuOpen(false);
-            navigate('/lessons', { state: { scrollToCourses: true } });
-          }}
-        >
-          <span>Courses</span>
-        </button>
-        <Link
-          to="/glossary"
-          className="nav-link"
-          onClick={() => setMenuOpen(false)}
-        >
-          <span>Glossary</span>
-        </Link>
-      </nav>
+<nav
+  className={`mobile-nav ${menuOpen ? "mobile-nav--open" : ""}`}
+  aria-label="Mobile navigation"
+>
+  {/* Main Navigation */}
+  <button
+    type="button"
+    className="nav-link"
+    onClick={() => {
+      setMenuOpen(false);
+      navigate("/lessons", { state: { scrollToTop: true } });
+    }}
+  >
+    <FaHome className="nav-icon" />
+    <span>Home</span>
+  </button>
 
+  <button
+    type="button"
+    className="nav-link"
+    onClick={() => {
+      setMenuOpen(false);
+      navigate("/lessons", { state: { scrollToCourses: true } });
+    }}
+  >
+    <FaBook className="nav-icon" />
+    <span>Courses</span>
+  </button>
+
+  <button
+    type="button"
+    className="nav-link"
+    onClick={() => {
+      setMenuOpen(false);
+      navigate("/lessons", { state: { scrollToRoadmap: true } });
+    }}
+  >
+    <FaLightbulb className="nav-icon" />
+    <span>Roadmap Generator</span>
+  </button>
+
+  {/* Projects Section */}
+  {/* Projects Section */}
+<div className="mobile-nav-section">
+
+  <button
+    type="button"
+    className="nav-link mobile-project-toggle"
+    onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
+  >
+    <FaTasks className="nav-icon" />
+    <span>Projects</span>
+
+    <FaChevronDown
+      className={`dropdown-arrow ${
+        mobileProjectsOpen ? "rotate-arrow" : ""
+      }`}
+    />
+  </button>
+
+  {mobileProjectsOpen && (
+    <>
+      <button
+        type="button"
+        className="nav-link nav-sublink"
+        onClick={() => {
+          setMenuOpen(false);
+          navigate("/lessons", {
+            state: { scrollToProjectGenerator: true },
+          });
+        }}
+      >
+        <FaTasks className="nav-icon" />
+        <span>Project Milestone</span>
+      </button>
+
+      <button
+        type="button"
+        className="nav-link nav-sublink"
+        onClick={() => {
+          setMenuOpen(false);
+          navigate("/lessons", {
+            state: { scrollToProjectSuggestions: true },
+          });
+        }}
+      >
+        <FaLightbulb className="nav-icon" />
+        <span>Project Ideas</span>
+      </button>
+    </>
+  )}
+</div>
+  <button
+    type="button"
+    className="nav-link"
+    onClick={() => {
+      setMenuOpen(false);
+      navigate("/lessons", { state: { scrollToFaq: true } });
+    }}
+  >
+    <FaQuestionCircle className="nav-icon" />
+    <span>FAQ</span>
+  </button>
+
+  <button
+    type="button"
+    className="nav-link"
+    onClick={() => {
+      setMenuOpen(false);
+      navigate("/lessons", { state: { scrollToContact: true } });
+    }}
+  >
+    <FaEnvelope className="nav-icon" />
+    <span>Contact Us</span>
+  </button>
+
+  {/* Auth Section */}
+  {user ? (
+    <>
+      <div className="mobile-streak">
+        <StreakCounter />
+      </div>
+
+      <button
+        type="button"
+        className="nav-link"
+        onClick={() => {
+          setMenuOpen(false);
+          navigate("/leaderboard");
+        }}
+      >
+        <FaTrophy className="nav-icon" />
+        <span>Leaderboard</span>
+      </button>
+
+      <button
+        type="button"
+        className="nav-link"
+        onClick={() => {
+          setMenuOpen(false);
+          navigate("/dashboard");
+        }}
+      >
+        <FaTachometerAlt className="nav-icon" />
+        <span>Dashboard</span>
+      </button>
+
+      <button
+        type="button"
+        className="nav-link"
+        onClick={handleLogout}
+      >
+        <FaSignOutAlt className="nav-icon" />
+        <span>Logout</span>
+      </button>
+    </>
+  ) : (
+    <>
+      <button
+        type="button"
+        className="nav-link"
+        onClick={() => {
+          setMenuOpen(false);
+          navigate("/login");
+        }}
+      >
+        <FaSignInAlt className="nav-icon" />
+        <span>Login</span>
+      </button>
+
+      <button
+        type="button"
+        className="nav-link"
+        onClick={() => {
+          setMenuOpen(false);
+          navigate("/signup");
+        }}
+      >
+        <FaUserPlus className="nav-icon" />
+        <span>Sign Up</span>
+      </button>
+    </>
+  )}
+</nav>
       {isHomePage && (
         <div className="header-title-row">
           <h1>
