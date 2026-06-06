@@ -224,6 +224,7 @@ import ScrollNavigator from "./components/common/ScrollNavigator";
 import GlobalBackNav from "./components/common/GlobalBackNav.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import { SearchProvider } from "./context/SearchContext.jsx";
+import  Contact  from "./components/Contact.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -255,6 +256,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/CssLesson" element={<CssLesson />} />
           <Route path="/JsLesson" element={<JsLesson />} />
           <Route path="/Compiler" element={<Compiler />} />
+          <Route path="/contact" element={<Contact />} />
 
           {/* HTML Lessons */}
           <Route path="/HtmlLesson" element={<HtmlLesson />} />

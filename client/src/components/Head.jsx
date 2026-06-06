@@ -212,7 +212,7 @@ useEffect(() => {
 <button
   type="button"
   className="nav-link"
-  onClick={() => navigate("/lessons", { state: { scrollToContact: true } })}
+  onClick={() => navigate("/contact", { state: { scrollToContact: true } })}
 >
   <span>Contact Us</span>
 </button>

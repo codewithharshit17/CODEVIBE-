@@ -3332,3 +3332,121 @@ select:focus {
   justify-content: space-between;
   align-items: center;
 }
+
+.contact-heading{
+  color: var(--primary-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.message-box{
+  border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 10px;
+}
+.message-box h4{
+  font-size: 20px;
+  color: var(--primary-red)
+}
+.message-input{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.message-input-top{
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.message-input-top input {
+  width: 100%;
+}
+.social-flex{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.social-flex a{
+   display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 77, 109, 0.25);
+  background: rgba(255, 77, 109, 0.05);
+  transition: all 0.3s ease;
+}
+.social-flex a:hover {
+  color: white;
+  border-color: var(--primary-red);
+  background: rgba(255, 77, 109, 0.15);
+  box-shadow: 0 0 12px rgba(255, 77, 109, 0.35);
+  transform: translateY(-2px);
+  text-shadow: 0 0 8px rgba(255, 77, 109, 0.4);
+}
+
+.social-flex a svg {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.contact-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.other-contact{
+  border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.contact-page{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 40px;
+}
+
+.other-contact h4{
+    font-size: 20px;
+  color: var(--primary-red)
+}
+.other-contact h5{
+    font-size: 18px;
+  color: var(--primary-red)
+}
+
+.contact-feedback{
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 77, 109, 0.25);
+  background: rgba(255, 77, 109, 0.05);
+  transition: all 0.3s ease;
+}
+
+.message-box input{
+  height: 20px;
+}
