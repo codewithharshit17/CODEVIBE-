@@ -83,7 +83,11 @@ useEffect(() => {
     setQuery(course.label);
     setSuggestions([]);
     setFocused(false);
-    navigate(course.path);
+    if (!user) {
+      navigate("/login", { state: { from: { pathname: course.path } } });
+    } else {
+      navigate(course.path);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -110,7 +114,6 @@ useEffect(() => {
     setSuggestions([]);
     inputRef.current?.focus();
   };
-
 
   return (
     <header className="site-header" ref={wrapperRef}>

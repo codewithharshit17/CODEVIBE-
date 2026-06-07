@@ -2,6 +2,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const UserModel = require("../../models/user.models");
 const momsvalidation = require("../../services/validationScheme");
+const { JWT_SECRET, JWT_EXPIRES_IN } = require("../../config/jwt");
+const { validatePassword } = require("../../utils/passwordValidator");
 
 const register = async (req, res, next) => {
   try {
@@ -13,6 +15,16 @@ const register = async (req, res, next) => {
     const password = req.body.password;
 
     console.log("📝 Register attempt:", { username, email, college, year });
+
+    // 📌 Password strength validation (before Joi validation for clearer error messages)
+    const passwordValidation = validatePassword(password);
+    if (!passwordValidation.isValid) {
+      return res.status(400).json({
+        success: false,
+        message: "Password does not meet security requirements",
+        passwordErrors: passwordValidation.errors,
+      });
+    }
 
     // 📌 Validation check
     const { error } = momsvalidation.validate({
@@ -59,8 +71,8 @@ const register = async (req, res, next) => {
         email: userCreate.email,
         username: userCreate.username,
       },
-      process.env.JWT_SECRET || "codevibe_default_secret",
-      { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+      JWT_SECRET,
+      { expiresIn: JWT_EXPIRES_IN }
     );
 
     // 📌 Success response

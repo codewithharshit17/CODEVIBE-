@@ -7,6 +7,7 @@ import FAQ from "./FAQ";
 import Testimonials from "./testimonials";
 import EmptyState from "./EmptyState";
 import { FaBookOpen, FaHeart, FaSearch } from "react-icons/fa";
+import { useAuth } from "../AuthProvider.jsx";
 import { useDebounce } from '../hooks/useDebounce';
 import { useSearch } from '../context/SearchContext.jsx';
 
@@ -25,9 +26,9 @@ import axios from 'axios';
 import API_BASE_URL from '../config/api';
 
 const Courses = () => {
+  const { user } = useAuth()
   const { query, setQuery } = useSearch();
   const debouncedQuery = useDebounce(query, 350);
-  const [user, setUser] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [wishlist, setWishlist] = useState([]);
   const [animatingId, setAnimatingId] = useState(null);
@@ -37,25 +38,22 @@ const Courses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
-    if (loggedInUser) {
-      const parsedUser = JSON.parse(loggedInUser);
-      setUser(parsedUser);
-      const token = localStorage.getItem('authToken');
-      if (parsedUser.email && token) {
-        axios.get(`${API_BASE_URL}/api/progress/${parsedUser.email}`, {
-          headers: { Authorization: `Bearer ${token}` }
+if (user?.email) {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      axios.get(`${API_BASE_URL}/api/progress/${user.email}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(res => {
+          setCompletedLessons(res.data.completedLessons || []);
+          setProgressData(res.data);
         })
-          .then(res => {
-            setCompletedLessons(res.data.completedLessons || []);
-            setProgressData(res.data);
-          })
-          .catch(err => console.error(err));
-      }
+        .catch(err => console.error(err));
     }
-    const savedWishlist = localStorage.getItem('codevibe_wishlist');
-    if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
-  }, []);
+  }
+  const savedWishlist = localStorage.getItem('codevibe_wishlist');
+  if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
+}, [user]);
   const location = useLocation();
   useEffect(() => {
     if (location.state?.scrollToTop) {
@@ -156,7 +154,7 @@ const Courses = () => {
   });
 
   const getLevelBadge = (level) => {
-    switch(level) {
+    switch (level) {
       case 'Beginner': return { bg: '#2e7d32', text: '#fff' };
       case 'Intermediate': return { bg: '#ed6c02', text: '#fff' };
       case 'Advanced': return { bg: '#d32f2f', text: '#fff' };

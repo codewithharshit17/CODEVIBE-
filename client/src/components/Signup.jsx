@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import API_BASE_URL from "../config/api";
 import registerImage from "../assets/registerImage.png";
 import PasswordField from "./PasswordField";
+import PasswordStrengthIndicator from "./PasswordStrengthIndicator";
 import Dropdown from "./common/Dropdown";
 
 const Signup = () => {
@@ -20,6 +21,7 @@ const Signup = () => {
   });
 
   const [responseMsg, setResponseMsg] = useState("");
+  const [passwordErrors, setPasswordErrors] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -33,6 +35,7 @@ const Signup = () => {
     e.preventDefault();
 
     setResponseMsg("");
+    setPasswordErrors([]);
 
     // 🔐 Frontend validations
     if (!formData.year) {
@@ -74,11 +77,16 @@ const Signup = () => {
     } catch (error) {
       console.error("❌ Signup error:", error.response?.data || error.message);
 
-      const msg =
-        error.response?.data?.message ||
-        "Something went wrong. Please try again.";
-
-      setResponseMsg(msg);
+      // Handle password validation errors from backend
+      if (error.response?.data?.passwordErrors) {
+        setPasswordErrors(error.response.data.passwordErrors);
+        setResponseMsg("Password does not meet security requirements");
+      } else {
+        const msg =
+          error.response?.data?.message ||
+          "Something went wrong. Please try again.";
+        setResponseMsg(msg);
+      }
     } finally {
       setLoading(false);
     }
@@ -154,6 +162,33 @@ const Signup = () => {
                 }))
               }
             />
+
+            {/* Password Strength Indicator */}
+            {formData.password && (
+              <PasswordStrengthIndicator password={formData.password} />
+            )}
+
+            {/* Backend Password Errors */}
+            {passwordErrors.length > 0 && (
+              <div style={{
+                backgroundColor: "rgba(255, 77, 109, 0.1)",
+                border: "1px solid #ff4d6d",
+                padding: "0.75rem",
+                borderRadius: "6px",
+                marginTop: "0.75rem",
+              }}>
+                <p style={{ color: "#ff4d6d", margin: "0 0 0.5rem 0", fontSize: "0.9rem", fontWeight: "600" }}>
+                  Password Requirements:
+                </p>
+                <ul style={{ margin: 0, paddingLeft: "1.25rem", color: "rgba(255, 255, 255, 0.85)" }}>
+                  {passwordErrors.map((error, idx) => (
+                    <li key={idx} style={{ fontSize: "0.85rem", marginBottom: "0.25rem" }}>
+                      {error}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Confirm Password */}
             <PasswordField

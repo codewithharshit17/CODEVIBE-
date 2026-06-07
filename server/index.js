@@ -40,17 +40,18 @@ const isLocalDevOrigin = (origin = "") => {
 backend.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps or curl requests)
       if (
         !origin ||
         allowedOrigins.includes(origin) ||
         isLocalDevOrigin(origin) ||
         /^https:\/\/deploy-preview-\d+--codevibeforyou\.netlify\.app$/.test(origin)
       ) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
+        return callback(null, true);
       }
+
+      console.log("❌ Blocked CORS origin:", origin);
+
+      return callback(null, false); // 👈 IMPORTANT CHANGE
     },
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     credentials: true,
