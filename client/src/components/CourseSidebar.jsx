@@ -2,31 +2,29 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_BASE_URL from '../config/api';
 import { FaTrophy, FaTimes, FaStar } from 'react-icons/fa';
+import { useAuth } from '../AuthProvider.jsx';
 
 const CourseSidebar = ({ coursePrefix, totalLessons, courseTitle }) => {
+  const { user, token } = useAuth();
+  const userEmail = user?.email;
   const [progressData, setProgressData] = useState(null);
   const [completedCount, setCompletedCount] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [popMessage, setPopMessage] = useState('');
 
   useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
-    if (loggedInUser) {
-      const parsedUser = JSON.parse(loggedInUser);
-      if (parsedUser.email) {
-        const token = localStorage.getItem('authToken');
-        axios.get(`${API_BASE_URL}/api/progress/${parsedUser.email}`, {
-          headers: token ? { Authorization: `Bearer ${token}` } : {},
-        })
-          .then(res => {
-            setProgressData(res.data);
-            const completed = (res.data.completedLessons || []).filter(id => id && id.startsWith(coursePrefix)).length;
-            setCompletedCount(completed);
-          })
-          .catch(err => console.error(err));
-      }
-    }
-  }, [coursePrefix]);
+    if (!userEmail) return;
+
+    axios.get(`${API_BASE_URL}/api/progress/${userEmail}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+      .then(res => {
+        setProgressData(res.data);
+        const completed = (res.data.completedLessons || []).filter(id => id && id.startsWith(coursePrefix)).length;
+        setCompletedCount(completed);
+      })
+      .catch(err => console.error(err));
+  }, [coursePrefix, token, userEmail]);
 
   useEffect(() => {
     const handleProgress = () => {
