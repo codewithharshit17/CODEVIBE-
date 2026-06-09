@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const http = require("http");
 const dotenv = require("dotenv");
 const routes = require("./routes/index");
 
@@ -9,7 +8,16 @@ dotenv.config();
 
 const backend = express();
 backend.set("trust proxy", 1);
-const server = http.Server(backend);
+let server;
+
+process.on("uncaughtException", (err) => {
+  console.error("❌ Uncaught Exception:", err);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (reason) => {
+  console.error("❌ Unhandled Rejection:", reason);
+});
 
 backend.use(express.json());
 backend.use(express.urlencoded({ extended: true }));
@@ -77,53 +85,78 @@ const MONGODB_URL =
   process.env.MONGODB_URI ||
   "mongodb://127.0.0.1:27017/codevibe";
 
-const FALLBACK_MONGODB_URL = "mongodb://127.0.0.1:27017/codevibe";
-
-const connectToMongo = async (url) => {
-  try {
-    await mongoose.connect(url, {
-      serverSelectionTimeoutMS: 10000,
-    });
-    return true;
-  } catch (err) {
-    console.error("❌ MongoDB connection error:", err);
-    return false;
-  }
+const MONGOOSE_OPTIONS = {
+  serverSelectionTimeoutMS: 10000,
 };
 
-const startServer = async () => {
-  let connected = false;
+const DEFAULT_PORT = Number(process.env.PORT) || 5002;
+const MAX_PORT_ATTEMPTS = 10;
 
-  if (MONGODB_URL && MONGODB_URL !== FALLBACK_MONGODB_URL) {
-    connected = await connectToMongo(MONGODB_URL);
-    if (!connected) {
-      console.warn("⚠️ Atlas connection failed. Falling back to local MongoDB...");
-      connected = await connectToMongo(FALLBACK_MONGODB_URL);
+const tryStartServer = (port, attempt = 1) => {
+  server = backend.listen(port, () => {
+    console.log(`✅ Server Started on port ${port}`);
+    if (port !== DEFAULT_PORT) {
+      console.log(
+        `ℹ️ Fallback port used because ${DEFAULT_PORT} was already occupied.`
+      );
     }
-  } else {
-    connected = await connectToMongo(MONGODB_URL || FALLBACK_MONGODB_URL);
-  }
+  });
 
-  if (!connected) {
-    console.error("❌ MongoDB connection failed for both Atlas and local fallback.");
-    return;
-  }
+  server.once("error", (err) => {
+    if (err.code === "EADDRINUSE" && attempt < MAX_PORT_ATTEMPTS) {
+      const nextPort = port + 1;
+      console.warn(
+        `⚠️ Port ${port} is in use. Attempting fallback port ${nextPort}...`
+      );
+      return tryStartServer(nextPort, attempt + 1);
+    }
 
-  const PORT = process.env.PORT || 5002;
+    if (err.code === "EADDRINUSE") {
+      console.error(
+        `❌ Could not bind to any port from ${DEFAULT_PORT} to ${DEFAULT_PORT + MAX_PORT_ATTEMPTS - 1}.`
+      );
+    } else {
+      console.error("❌ HTTP server error:", err);
+    }
 
-  server.listen(PORT, () => {
-    console.log(`✅ Server Started on port ${PORT}`);
-    console.log("✅ Connected to MongoDB");
+    process.exit(1);
   });
 };
 
-startServer();
+const connectToMongo = async () => {
+  try {
+    await mongoose.connect(MONGODB_URL, MONGOOSE_OPTIONS);
+    console.log("✅ Connected to MongoDB");
+  } catch (err) {
+    console.error("❌ MongoDB connection error:", err);
+    if (process.env.NODE_ENV === "production") {
+      process.exit(1);
+    }
+    console.warn(
+      "⚠️ Running in development mode without a live MongoDB connection."
+    );
+  } finally {
+    tryStartServer(DEFAULT_PORT);
+  }
+};
+
+connectToMongo();
 
 const gracefulShutdown = (signal) => {
   console.log(`\n⚠️ ${signal} received. Starting graceful shutdown...`);
-  
-  server.close(() => {
-    console.log("🏁 HTTP server closed.");
+
+  if (server && server.close) {
+    server.close(() => {
+      console.log("🏁 HTTP server closed.");
+      mongoose.connection.close(false).then(() => {
+        console.log("🔌 MongoDB connection closed.");
+        process.exit(0);
+      }).catch((err) => {
+        console.error("❌ Error during MongoDB disconnection:", err);
+        process.exit(1);
+      });
+    });
+  } else {
     mongoose.connection.close(false).then(() => {
       console.log("🔌 MongoDB connection closed.");
       process.exit(0);
@@ -131,7 +164,7 @@ const gracefulShutdown = (signal) => {
       console.error("❌ Error during MongoDB disconnection:", err);
       process.exit(1);
     });
-  });
+  }
 };
 
 process.on("SIGINT", () => gracefulShutdown("SIGINT"));

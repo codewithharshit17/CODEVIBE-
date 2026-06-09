@@ -18,7 +18,7 @@ const momsvalidation = joi.object({
             'string.pattern.uppercase': 'Password must contain at least one uppercase letter (A-Z)',
             'string.pattern.lowercase': 'Password must contain at least one lowercase letter (a-z)',
             'string.pattern.digit': 'Password must contain at least one numeric digit (0-9)',
-            'string.pattern.special': 'Password must contain at least one special character (!@#$%^&*()_+-=[]{}|;:\'",.<>?/)',
+            'string.pattern.special': 'Password must contain at least one special character',
             'any.required': 'Password is required'
         }),
     college: joi.string().min(2).max(50).required(),

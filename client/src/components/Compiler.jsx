@@ -1,6 +1,7 @@
 // src/components/Compiler.jsx
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { useAuth } from "../AuthProvider.jsx";
 // Dynamic API URL config resolving to localhost in dev and Render live server in production
 import API_BASE_URL from "../config/api";
 import Dropdown from "./common/Dropdown";
@@ -107,6 +108,7 @@ const Compiler = ({
   const [expected, setExpected]         = useState(undefined);
   const [got, setGot]                   = useState(undefined);
   const [status, setStatus]             = useState("");
+  const { token }                        = useAuth();
 
   const iframeRef = useRef(null);
   const startTimeRef = useRef(Date.now());
@@ -183,6 +185,34 @@ const Compiler = ({
     saveProgress(LessonId, sc, attempt);
   };
 
+  const logMistake = async ({ type = "OutputMismatch", message = "", exp = "", got: gotVal = "" } = {}) => {
+    if (serverLanguages.includes(language)) return;
+    if (!token) return;
+
+    try {
+      await axios.post(
+        `${API_BASE_URL}/api/mistakes/log`,
+        {
+          code,
+          language,
+          error: String(message || gotVal || exp || type || "Unknown mistake").trim(),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      window.dispatchEvent(
+        new CustomEvent("codevibe-progress-updated", {
+          detail: { lessonId: LessonId, score: 0 },
+        })
+      );
+    } catch (err) {
+      console.warn("Mistake log failed:", err?.response?.data || err?.message || err);
+    }
+  };
+
   const fail = ({ type = "OutputMismatch", message = "", hint = "", line = null, ms = 0, exp, got: gotVal } = {}) => {
     setIsSuccess(false);
     setErrorType(type);
@@ -194,6 +224,10 @@ const Compiler = ({
     setExpected(exp);
     setGot(gotVal);
     setStatus("");
+
+    if (!serverLanguages.includes(language)) {
+      logMistake({ type, message, exp, got: gotVal });
+    }
   };
 
   // ─── keyboard shortcuts ──────────────────────────────────────────────────
