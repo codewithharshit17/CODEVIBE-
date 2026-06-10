@@ -512,10 +512,20 @@ const Compiler = ({
       <div className="compiler-editor-wrap">
         {/* toolbar */}
         <div className="compiler-toolbar">
-          <button title="Copy Code" onClick={copyCode} className="compiler-btn compiler-btn--copy">
+          <button
+              title="Copy Code"
+              aria-label="Copy code to clipboard"
+              onClick={copyCode}
+              className="compiler-btn compiler-btn--copy"
+            >
             📋 Copy
           </button>
-          <button title="Download Code" onClick={downloadCode} className="compiler-btn compiler-btn--download">
+          <button
+              title="Download Code"
+              aria-label="Download code file"
+              onClick={downloadCode}
+              className="compiler-btn compiler-btn--download"
+            >
             ⬇️ Download
           </button>
         </div>
@@ -532,11 +542,17 @@ const Compiler = ({
 
       {/* action row */}
       <div className="compiler-actions">
-        <button title="Run (Ctrl + Enter)" onClick={runCode} className="compiler-btn compiler-btn--run">
+        <button
+            title="Run (Ctrl + Enter)"
+            aria-label="Run code"
+            onClick={runCode}
+            className="compiler-btn compiler-btn--run"
+          >
           ▶ Run
         </button>
-        <button
+       <button
           title="Reset (Ctrl + R)"
+          aria-label="Reset code editor"
           onClick={() => {
             setCode(initialCode);
             setStatus("");
@@ -550,8 +566,15 @@ const Compiler = ({
         >
           ↺ Reset
         </button>
+
         {status && !isSuccess && !errorType && (
-          <span className="compiler-status">{status}</span>
+          <span
+            className="compiler-status"
+            role="status"
+            aria-live="polite"
+          >
+            {status}
+          </span>
         )}
       </div>
 
