@@ -49,16 +49,12 @@ backend.use(
   cors({
     origin: (origin, callback) => {
       if (
+        !origin ||
         allowedOrigins.includes(origin) ||
         isLocalDevOrigin(origin) ||
         /^https:\/\/deploy-preview-\d+--codevibeforyou\.netlify\.app$/.test(origin)
       ) {
         return callback(null, true);
-      }
-
-      if (!origin) {
-        console.log("❌ Blocked request with missing Origin header");
-        return callback(null, false);
       }
 
       console.log("❌ Blocked CORS origin:", origin);
@@ -144,11 +140,7 @@ const connectToMongo = async () => {
   }
 };
 
-if (require.main === module) {
-  connectToMongo();
-}
-
-module.exports = { backend, allowedOrigins, isLocalDevOrigin };
+connectToMongo();
 
 const gracefulShutdown = (signal) => {
   console.log(`\n⚠️ ${signal} received. Starting graceful shutdown...`);

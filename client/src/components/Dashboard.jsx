@@ -19,7 +19,6 @@ import { useAuth } from "../AuthProvider.jsx";
 import API_BASE_URL from "../config/api";
 // My Mistakes Dashboard - NEW FEATURE
 import MyMistakesDashboard from "./MyMistakesDashboard";
-import BookmarksWidget from "./BookmarksWidget";
 import DailyQuests from "./DailyQuests.jsx";
 import "./Dashboard.css";
 
@@ -1297,9 +1296,6 @@ const Dashboard = () => {
 
               {/* ── My Mistakes Dashboard - NEW FEATURE ── */}
               <MyMistakesDashboard />
-
-              {/* ── Bookmarks Widget ── */}
-              <BookmarksWidget />
 
               {/* ── Solved / Unsolved per Subject ── */}
               {analytics?.analytics?.subjectSolvedStats?.length > 0 && (
