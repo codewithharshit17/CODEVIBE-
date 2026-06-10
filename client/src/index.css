@@ -2583,11 +2583,11 @@ select:focus {
   border: none;
   color: rgba(176, 184, 212, 0.6);
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.8rem;
   display: flex;
   align-items: center;
   font-size: 0.8rem;
-  border-radius: 50%;
+  border-radius: 14px;
   margin: 0;
   box-shadow: none;
   transition: color 0.2s ease, background 0.2s ease;
@@ -2740,7 +2740,7 @@ select:focus {
 
   /* Hide "Search" text label on very small screens, keep icon */
   .search-btn {
-    padding: 0.45rem 0.75rem;
+    padding: 0.9rem 0.9rem;
     font-size: 0;
     /* hide text */
     line-height: 1;
