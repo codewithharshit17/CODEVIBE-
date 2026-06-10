@@ -140,8 +140,16 @@ const validateCompletionPayload = (body = {}) => {
 
 exports.getAllLessons = async (req, res) => {
   try {
-    const lessons = await Lesson.find({}).sort({ order: 1 });
-    res.json(lessons);
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const limit = Math.min(50, Math.max(1, parseInt(req.query.limit) || 20));
+    const skip = (page - 1) * limit;
+
+    const [data, total] = await Promise.all([
+      Lesson.find({}).sort({ order: 1 }).skip(skip).limit(limit).lean(),
+      Lesson.countDocuments({}),
+    ]);
+
+    res.json({ data, total, page, totalPages: Math.ceil(total / limit) });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
