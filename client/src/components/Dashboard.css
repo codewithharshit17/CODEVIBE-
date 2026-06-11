@@ -397,6 +397,7 @@ body::-webkit-scrollbar,
 @media (min-width: 721px) {
   .last-updated {
     display: inline;
+    
   }
 }
 
@@ -861,9 +862,7 @@ body::-webkit-scrollbar,
     padding: 1.3rem 1rem;
   }
 
-  .history{
-    margin: 0px 2px 5px 0px;
-  }
+  
 
   .dashboard-hero {
     flex-direction: column;
