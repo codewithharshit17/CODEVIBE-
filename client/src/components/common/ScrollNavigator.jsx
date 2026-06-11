@@ -62,7 +62,9 @@ const ScrollNavigator = () => {
         aria-label="Scroll to top"
         title="Scroll to top"
       >
-        <FaArrowUp aria-hidden="true" />
+        <span style={{ fontSize: '20px', lineHeight: 1 }}>
+          <FaArrowUp aria-hidden="true" />
+        </span>
       </button>
       <button
         className={`scroll-navigator__btn scroll-navigator__btn--down ${atBottom ? "scroll-navigator__btn--hidden" : ""}`}
@@ -71,7 +73,9 @@ const ScrollNavigator = () => {
         title="Scroll to bottom"
         disabled={atBottom}
       >
-        <FaArrowDown aria-hidden="true" />
+        <span style={{ fontSize: '20px', lineHeight: 1 }}>
+          <FaArrowDown aria-hidden="true" />
+        </span>
       </button>
     </div>
   );
