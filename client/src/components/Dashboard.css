@@ -686,7 +686,7 @@ body::-webkit-scrollbar,
   place-items: center;
   color: var(--muted);
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 18px;
+  border-radius: 10px;
   border: 1px dashed rgba(255, 255, 255, 0.12);
 }
 
