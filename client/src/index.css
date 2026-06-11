@@ -3149,11 +3149,12 @@ select:focus {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 9999;
+  z-index: 99999;
   display: flex;
   flex-direction: column;
   gap: 10px;
   animation: scrollNavFadeIn 0.3s ease;
+  pointer-events: none;
 }
 
 @keyframes scrollNavFadeIn {
@@ -3189,6 +3190,7 @@ select:focus {
   padding: 0;
   margin: 0;
   line-height: 1;
+  pointer-events: auto;
 }
 
 .scroll-navigator__btn:hover {
@@ -3206,17 +3208,10 @@ select:focus {
 }
 
 .scroll-navigator__btn--hidden {
-  opacity: 0.35;
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-}
-
-.scroll-navigator__btn--hidden:hover {
-  transform: none;
-  background: rgba(26, 31, 58, 0.75);
-  border-color: rgba(255, 77, 109, 0.5);
-  box-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.3),
-    0 0 12px rgba(255, 77, 109, 0.25);
+  transform: scale(0.8);
 }
 
 @media (max-width: 768px) {
