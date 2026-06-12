@@ -91,7 +91,8 @@ const Compiler = ({
   initialCode = "",
   expectedOutput,
   onSuccess,
-  hint: lessonHint,   // ← question-specific hint passed from each lesson
+  hint: lessonHint,
+  lessonTitle = "",
 }) => {
   const [language, setLanguage]         = useState(fixedLanguage || "html");
   const [code, setCode]                 = useState(initialCode);
@@ -140,6 +141,30 @@ const Compiler = ({
     link.click();
     URL.revokeObjectURL(link.href);
     setStatus("⬇️ Code downloaded!");
+  };
+
+  // ── share snippet ────────────────────────────────────────────────────────
+  const shareCode = async () => {
+    if (!code.trim()) return;
+    setStatus("⏳ Creating share link...");
+    try {
+      const email = localStorage.getItem("userEmail");
+      const username = JSON.parse(localStorage.getItem("user") || "{}")?.username || "Anonymous";
+      const res = await axios.post(`${API_BASE_URL}/api/snippets`, {
+        code,
+        language,
+        lessonId: LessonId || "",
+        title: lessonTitle || LessonId || "Untitled",
+        username,
+        score,
+      });
+      const shareUrl = `${window.location.origin}/#/snippet/${res.data.slug}`;
+      await navigator.clipboard.writeText(shareUrl);
+      setStatus("✅ Share link copied to clipboard!");
+    } catch (err) {
+      console.error("Share snippet error:", err);
+      setStatus("❌ Failed to create share link");
+    }
   };
 
   // ── progress ─────────────────────────────────────────────────────────────
@@ -527,6 +552,14 @@ const Compiler = ({
               className="compiler-btn compiler-btn--download"
             >
             ⬇️ Download
+          </button>
+          <button
+              title="Share Code"
+              aria-label="Share code snippet"
+              onClick={shareCode}
+              className="compiler-btn compiler-btn--share"
+            >
+            🔗 Share
           </button>
         </div>
 
