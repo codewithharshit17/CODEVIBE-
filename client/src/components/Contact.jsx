@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   FaDiscord,
   FaGithub,
@@ -11,6 +12,13 @@ import {
 } from "react-icons/fi";
 
 const Contact = () => {
+    useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant"
+    });
+  }, []);
+  
   const handleSubmit = (e)=>{
     e.preventDefault();
     alert("Message Sent!");
