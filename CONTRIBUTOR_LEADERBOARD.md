@@ -14,7 +14,7 @@ Last updated: 2026-06-13
 
 | Rank | Contributor | Score | Commits | Merged PRs | Closed Issues |
 | --- | --- | ---: | ---: | ---: | ---: |
-| 1 | [@Pcmhacker-piro](https://github.com/Pcmhacker-piro) | 632 | 11 | 20 | 82 |
+| 1 | [@Pcmhacker-piro](https://github.com/Pcmhacker-piro) | 630 | 10 | 20 | 82 |
 | 2 | [@thedaripanator](https://github.com/thedaripanator) | 155 | 15 | 9 | 7 |
 | 3 | [@Saubhagya1621](https://github.com/Saubhagya1621) | 133 | 9 | 7 | 9 |
 | 4 | [@sricharan-213](https://github.com/sricharan-213) | 131 | 8 | 7 | 9 |
@@ -25,8 +25,8 @@ Last updated: 2026-06-13
 | 9 | [@vasheekhan](https://github.com/vasheekhan) | 110 | 5 | 3 | 14 |
 | 10 | [@Aayuiiitmg](https://github.com/Aayuiiitmg) | 104 | 12 | 8 | 0 |
 | 11 | [@namrarafique93-del](https://github.com/namrarafique93-del) | 97 | 11 | 5 | 5 |
-| 12 | [@pranav-cholleti](https://github.com/pranav-cholleti) | 86 | 18 | 3 | 4 |
-| 13 | [@Vaibhav-221](https://github.com/Vaibhav-221) | 81 | 3 | 3 | 9 |
+| 12 | [@Vaibhav-221](https://github.com/Vaibhav-221) | 96 | 3 | 4 | 10 |
+| 13 | [@pranav-cholleti](https://github.com/pranav-cholleti) | 86 | 18 | 3 | 4 |
 | 14 | [@divyagsharma2006-blip](https://github.com/divyagsharma2006-blip) | 80 | 5 | 4 | 6 |
 | 15 | [@Swetha-Varma-K](https://github.com/Swetha-Varma-K) | 75 | 5 | 4 | 5 |
 | 16 | [@anshul23102](https://github.com/anshul23102) | 72 | 1 | 1 | 12 |
@@ -71,15 +71,15 @@ Last updated: 2026-06-13
 | 55 | [@Samirahs08](https://github.com/Samirahs08) | 29 | 2 | 1 | 3 |
 | 56 | [@sujitha-kotyada](https://github.com/sujitha-kotyada) | 29 | 2 | 1 | 3 |
 | 57 | [@tazmeen24](https://github.com/tazmeen24) | 29 | 7 | 1 | 1 |
-| 58 | [@BhakktiGautam](https://github.com/BhakktiGautam) | 27 | 1 | 1 | 3 |
-| 59 | [@bhumishah2411](https://github.com/bhumishah2411) | 27 | 1 | 1 | 3 |
-| 60 | [@Kartikey-Pathak](https://github.com/Kartikey-Pathak) | 27 | 1 | 1 | 3 |
-| 61 | [@naredlaniharika](https://github.com/naredlaniharika) | 27 | 6 | 1 | 1 |
-| 62 | [@pericharlabindhumadhavi-data](https://github.com/pericharlabindhumadhavi-data) | 27 | 1 | 1 | 3 |
-| 63 | [@pracheyyy](https://github.com/pracheyyy) | 27 | 1 | 1 | 3 |
-| 64 | [@ravishankar-03](https://github.com/ravishankar-03) | 27 | 1 | 1 | 3 |
-| 65 | [@HariniGS-1207](https://github.com/HariniGS-1207) | 26 | 3 | 1 | 2 |
-| 66 | [@shreyamevada6](https://github.com/shreyamevada6) | 26 | 3 | 1 | 2 |
+| 58 | [@bhumishah2411](https://github.com/bhumishah2411) | 27 | 1 | 1 | 3 |
+| 59 | [@Kartikey-Pathak](https://github.com/Kartikey-Pathak) | 27 | 1 | 1 | 3 |
+| 60 | [@naredlaniharika](https://github.com/naredlaniharika) | 27 | 6 | 1 | 1 |
+| 61 | [@pericharlabindhumadhavi-data](https://github.com/pericharlabindhumadhavi-data) | 27 | 1 | 1 | 3 |
+| 62 | [@pracheyyy](https://github.com/pracheyyy) | 27 | 1 | 1 | 3 |
+| 63 | [@ravishankar-03](https://github.com/ravishankar-03) | 27 | 1 | 1 | 3 |
+| 64 | [@HariniGS-1207](https://github.com/HariniGS-1207) | 26 | 3 | 1 | 2 |
+| 65 | [@shreyamevada6](https://github.com/shreyamevada6) | 26 | 3 | 1 | 2 |
+| 66 | [@BhakktiGautam](https://github.com/BhakktiGautam) | 25 | 0 | 1 | 3 |
 | 67 | [@vipul674](https://github.com/vipul674) | 25 | 0 | 0 | 5 |
 | 68 | [@RishiMaskare](https://github.com/RishiMaskare) | 24 | 2 | 1 | 2 |
 | 69 | [@Suhas334](https://github.com/Suhas334) | 24 | 2 | 2 | 0 |
